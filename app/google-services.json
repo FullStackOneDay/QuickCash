@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "957787598719",
+    "project_id": "quick-cash-grp13",
+    "storage_bucket": "quick-cash-grp13.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:957787598719:android:38753680881e933dee744a",
+        "android_client_info": {
+          "package_name": "com.example.quick_cash_grp13"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "957787598719-ogss7su6dujpaneviert3ljrph7ogpc4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvN_3pmzs1SHHo_Rqdx8D69k1YMRK-15g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "957787598719-ogss7su6dujpaneviert3ljrph7ogpc4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
