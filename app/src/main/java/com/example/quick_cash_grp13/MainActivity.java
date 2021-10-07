@@ -82,6 +82,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void registerCheck(String userName, String userPassword){
-        //TODO
+        mAuth.createUserWithEmailAndPassword(userName, userPassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    // Sign up success, update UI with the signed-up user's information
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    //update UI and move to next activity
+                } else {
+                    // If sign up fails, display a message to the user.
+                    Toast.makeText(MainActivity.this, "Authentication failed.",
+                            Toast.LENGTH_SHORT).show();
+                    //update UI and move to next activity
+                }
+            }
+        });
     }
 }
