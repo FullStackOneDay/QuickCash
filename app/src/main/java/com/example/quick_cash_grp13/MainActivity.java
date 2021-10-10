@@ -1,15 +1,13 @@
 package com.example.quick_cash_grp13;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
-//        Test Connection to Firebase
-//        Toast.makeText(MainActivity.this,"Firebase connection success", Toast.LENGTH_LONG).show();
+       //Test Connection to Firebase
+        // Toast.makeText(MainActivity.this,"Firebase connection success", Toast.LENGTH_LONG).show();
 
         // get user name from user input
         EditText loginUserName = (EditText) findViewById(R.id.loginUserName);
