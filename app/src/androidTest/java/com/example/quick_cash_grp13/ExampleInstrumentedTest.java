@@ -68,7 +68,7 @@ public class ExampleInstrumentedTest {
         assertEquals(jobTitle4,searchJob.searchByTitle(" Computer Vision Engineer"));
 
     }
-
+    @Test
     public void searchCompany(){
         ini();
         ArrayList<Job> jobCom1 = new ArrayList<>();
