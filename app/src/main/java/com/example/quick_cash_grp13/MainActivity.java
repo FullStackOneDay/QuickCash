@@ -33,9 +33,7 @@ public class MainActivity extends AppCompatActivity {
         EditText loginUserName = (EditText) findViewById(R.id.loginUserName);
         EditText loginPassword = (EditText) findViewById(R.id.loginPassword);
 
-        // get user name and password to string
-        String userName = (loginUserName.getText().toString());
-        String userPassword = (loginPassword.getText().toString());
+
 
         // get login button
         Button login = (Button) findViewById(R.id.loginCheck);
@@ -43,7 +41,10 @@ public class MainActivity extends AppCompatActivity {
             // register system
             @Override
             public void onClick(View view) {
-                loginCheck(userName,userPassword);
+                // get user name and password to string
+                String EmailAddr = (loginUserName.getText().toString());
+                String userPassword = (loginPassword.getText().toString());
+                loginCheck(EmailAddr,userPassword);
             }
         });
 
@@ -54,7 +55,11 @@ public class MainActivity extends AppCompatActivity {
             // register system
             @Override
             public void onClick(View view) {
-                registerCheck(userName,userPassword);
+                // get user name and password to string
+                String EmailAddr = (loginUserName.getText().toString());
+                String userPassword = (loginPassword.getText().toString());
+                registerCheck(EmailAddr,userPassword);
+                //registerCheck(EmailAddr,userPassword);
 
             }
         });
