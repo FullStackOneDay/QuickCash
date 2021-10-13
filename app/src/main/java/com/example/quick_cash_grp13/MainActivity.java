@@ -14,8 +14,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Hashtable;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -92,11 +96,23 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     // Sign up success, update UI with the signed-up user's information
+                    // This is adding users into the authentication section of Firebase
+                    Toast.makeText(MainActivity.this, "Registration succeed.",
+                            Toast.LENGTH_SHORT).show();
                     FirebaseUser user = mAuth.getCurrentUser();
+
+                    // This is record user's email and password to the database (kinda redundant)
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
+                    Hashtable<String,String> record = new Hashtable<>();
+                    record.put("email",userName);
+                    record.put("password",userPassword);
+                    ref.child(user.getUid()).setValue(record);
+
+
                     //update UI and move to next activity
                 } else {
                     // If sign up fails, display a message to the user.
-                    Toast.makeText(MainActivity.this, "Authentication failed.",
+                    Toast.makeText(MainActivity.this, "Registration failed.",
                             Toast.LENGTH_SHORT).show();
                     //update UI and move to next activity
                 }
