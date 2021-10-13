@@ -88,11 +88,14 @@ public class Job {
     @NonNull
     @Override
     public String toString() {
-        return "Job{" +
+        /*return "Job{" +
                 "jobTitle='" + jobTitle + '\'' +
                 ", field='" + field + '\'' +
                 ", location='" + location + '\'' +
                 ", salary=" + salary +
                 '}';
+
+         */
+        return field + ": " + jobTitle + " in " + location;
     }
 }
