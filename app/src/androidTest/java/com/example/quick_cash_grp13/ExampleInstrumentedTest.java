@@ -1,10 +1,18 @@
 package com.example.quick_cash_grp13;
 
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
+
 import android.content.Context;
 
+import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.junit.AfterClass;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -80,6 +88,23 @@ public class ExampleInstrumentedTest {
         assertEquals(jobCom1,searchJob.searchByCompany("leonidas")); // must pass
         assertEquals(jobCom2,searchJob.searchByCompany("Sprüngli"));
 
+    }
+
+    @Rule
+    public ActivityScenarioRule<MainActivity> myRule = new ActivityScenarioRule<>(MainActivity.class);
+
+    @Test
+    public void checkIfRegistrationPageIsVisible() {
+        onView(withId(R.id.textView)).check(matches(withText(R.string.quick_cash_login)));
+        onView(withId(R.id.loginUserName)).check(matches(withText(R.string.EMPTY_STRING)));
+        onView(withId(R.id.loginUserName)).check(matches(withText(R.string.EMPTY_STRING)));
+        onView(withId(R.id.loginCheck)).check(matches(withText(R.string.login)));
+        onView(withId(R.id.registerCheck)).check(matches(withText(R.string.register)));
+    }
+
+    @AfterClass
+    public static void tearDown() {
+        System.gc();
     }
 
 }
