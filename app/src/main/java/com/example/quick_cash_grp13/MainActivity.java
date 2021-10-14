@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         // Toast.makeText(MainActivity.this,"Firebase connection success", Toast.LENGTH_LONG).show();
 
         // get user name from user input
-        EditText loginUserName = (EditText) findViewById(R.id.loginUserName);
+        EditText loginEmail = (EditText) findViewById(R.id.loginEmail);
         EditText loginPassword = (EditText) findViewById(R.id.loginPassword);
 
 
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // get user name and password to string
-                String EmailAddr = (loginUserName.getText().toString());
+                String EmailAddr = (loginEmail.getText().toString());
                 String userPassword = (loginPassword.getText().toString());
                 loginCheck(EmailAddr,userPassword);
             }
@@ -60,12 +60,10 @@ public class MainActivity extends AppCompatActivity {
             // register system
             @Override
             public void onClick(View view) {
-                // get user name and password to string
-                String EmailAddr = (loginUserName.getText().toString());
+                // get email and password to string
+                String EmailAddr = (loginEmail.getText().toString());
                 String userPassword = (loginPassword.getText().toString());
                 registerCheck(EmailAddr,userPassword);
-                //registerCheck(EmailAddr,userPassword);
-
             }
         });
     }
@@ -87,14 +85,13 @@ public class MainActivity extends AppCompatActivity {
                     // If sign in fails, display a message to the user.
                     Toast.makeText(MainActivity.this, "Authentication failed.",
                             Toast.LENGTH_SHORT).show();
-                    //update UI and move to next activity
                 }
             }
         });
     }
 
-    public void registerCheck(String userName, String userPassword){
-        mAuth.createUserWithEmailAndPassword(userName, userPassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+    public void registerCheck(String userEmail, String userPassword){
+        mAuth.createUserWithEmailAndPassword(userEmail, userPassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
@@ -107,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                     // This is record user's email and password to the database (kinda redundant)
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
                     Hashtable<String,String> record = new Hashtable<>();
-                    record.put("email",userName);
+                    record.put("email", userEmail);
                     record.put("password",userPassword);
                     ref.child(user.getUid()).setValue(record);
 
