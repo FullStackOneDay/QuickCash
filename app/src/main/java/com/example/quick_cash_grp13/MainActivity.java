@@ -80,14 +80,14 @@ public class MainActivity extends AppCompatActivity {
                     FirebaseUser user = mAuth.getCurrentUser();
                     //update UI and move to next activity
                     //Start next activity
-                    Intent home = new Intent(getApplicationContext(),HomeActivity.class);
+                    Intent home = new Intent(getApplicationContext(),LandingPage.class);
                     startActivity(home);
 
                 } else {
                     // If sign in fails, display a message to the user.
                     Toast.makeText(MainActivity.this, "Authentication failed.",
                             Toast.LENGTH_SHORT).show();
-                    //update UI and move to next activity
+
                 }
             }
         });
