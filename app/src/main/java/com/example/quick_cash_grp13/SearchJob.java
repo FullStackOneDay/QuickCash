@@ -18,28 +18,65 @@ public class SearchJob {
         this.jobs = jobs;
     }
 
+    //Method that returns an ArrayList of jobs that have titles that contain the users' search.
     public ArrayList<Job> searchByTitle(String title){
         // TODO
-        return null;
+        ArrayList<Job> jobSearched = new ArrayList<>();
+        for (Job job : jobs){
+            if(job.getJobTitle().toLowerCase().contains(title)){
+                jobSearched.add(job);
+            }
+        }
+        return jobSearched;
     }
-    public  ArrayList<Job> searchByField(String title){
+
+    //Method that returns an ArrayList of jobs that have job fields that contain the users' search.
+    public  ArrayList<Job> searchByField(String field){
         // TODO
-        return null;
+        ArrayList<Job> fieldSearched = new ArrayList<>();
+        for(Job job : jobs){
+            if(job.getField().toLowerCase().contains(field)){
+                fieldSearched.add(job);
+            }
+        }
+        return fieldSearched;
+    }
+
+    //Method that returns an ArrayList of jobs that have companies that contain the users' search.
+    public  ArrayList<Job> searchByCompany(String company){
+        // TODO
+        ArrayList<Job> companySearched = new ArrayList<>();
+        for(Job job : jobs){
+            if(job.getCompany().toLowerCase().contains(company)){
+                companySearched.add(job);
+            }
+        }
+        return companySearched;
+    }
+
+    //Method that returns an ArrayList of jobs that have locations that contain the users' search.
+    public  ArrayList<Job> searchByLocation(String location){
+        // TODO
+        ArrayList<Job> locationSearched = new ArrayList<>();
+        for(Job job : jobs){
+            if(job.getLocation().toLowerCase().contains(location)){
+                locationSearched.add(job);
+            }
+        }
+        return locationSearched;
 
     }
-    public  ArrayList<Job>searchByCompany(String company){
-        // TODO
-        return null;
 
-    }
-    public  ArrayList<Job> searchByLocation(String title){
+    //Method that returns an ArrayList of jobs that have salaries that are exactly like the users' search.
+    public  ArrayList<Job> searchBySalary(double salary){
         // TODO
-        return null;
-
-    }
-    public  ArrayList<Job> searchBySalary(String title){
-        // TODO
-        return null;
+        ArrayList<Job> salarySearched = new ArrayList<>();
+        for(Job job : jobs){
+            if(job.getSalary() == (salary)){
+                salarySearched.add(job);
+            }
+        }
+        return salarySearched;
 
     }
 
