@@ -29,14 +29,14 @@
         android:layout_height="63dp"
         android:layout_marginTop="40dp"
         android:ems="10"
-        android:maxLength="30"
         android:hint="Password"
+        android:importantForAutofill="no"
         android:inputType="textPassword"
+        android:maxLength="30"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginEmail"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/loginEmail" />
 
     <Button
         android:id="@+id/loginCheck"
@@ -66,13 +66,24 @@
         android:layout_width="256dp"
         android:layout_height="51dp"
         android:layout_marginTop="40dp"
+        android:gravity="center"
         android:text="@string/quick_cash_login"
         android:textSize="30sp"
-        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/loginEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/errMsg"
+        android:layout_width="286dp"
+        android:layout_height="63dp"
+        android:ems="10"
+        android:hint="Login or register to create a new account"
+        app:layout_constraintBottom_toTopOf="@+id/loginCheck"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginPassword" />
 </androidx.constraintlayout.widget.ConstraintLayout>
