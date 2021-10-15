@@ -26,8 +26,8 @@ public class LandingPage extends Activity {
         employer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent employerIntent = new Intent(getApplicationContext(), ); will impliment once activitry for employer is created
-                //startActivity(employerIntent);
+                Intent employerIntent = new Intent(getApplicationContext(), createPostActivity.class);
+                startActivity(employerIntent);
             }
         });
 
