@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
-       //Test Connection to Firebase
+        //Test Connection to Firebase
         // Toast.makeText(MainActivity.this,"Firebase connection success", Toast.LENGTH_LONG).show();
 
         // get user name from user input
@@ -68,7 +68,23 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //check if email is empty
+    protected boolean isEmailEmpty(String email) {
+        return email.isEmpty();
+    }
+
+    //check if email is valid
+    protected boolean isEmailValid(String email) {
+        return !isEmailEmpty(email) && email.contains("@");
+    }
+
     public void loginCheck(String email, String userPassword){
+        if (isEmailEmpty(email)) {
+            Toast.makeText(MainActivity.this, "Email field required.", Toast.LENGTH_SHORT).show();
+        }
+        else if (isEmailValid(email) == false) {
+            Toast.makeText(MainActivity.this, "Invalid email address.", Toast.LENGTH_SHORT).show();
+        }
         mAuth.signInWithEmailAndPassword(email, userPassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
