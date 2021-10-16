@@ -85,6 +85,12 @@ public class MainActivity extends AppCompatActivity {
         errMsg.setText(msg);
     }
 
+    //intent switcher
+    protected void switch2HomeActivity() {
+        Intent home = new Intent(this, HomeActivity.class);
+        startActivity(home);
+    }
+
     //User login if user is already registered
     public void loginCheck(String email, String userPassword){
         final String[] errorMessage = {new String()};
@@ -108,8 +114,7 @@ public class MainActivity extends AppCompatActivity {
                         FirebaseUser user = mAuth.getCurrentUser();
                         //update UI and move to next activity
                         //Start next activity
-                        Intent home = new Intent(getApplicationContext(), HomeActivity.class);
-                        startActivity(home);
+                        switch2HomeActivity();
 
                     } else {
                         // If sign in fails, display a message to the user.
@@ -122,33 +127,44 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void registerCheck(String userEmail, String userPassword){
-        mAuth.createUserWithEmailAndPassword(userEmail, userPassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    // Sign up success, update UI with the signed-up user's information
-                    // This is adding users into the authentication section of Firebase
-                    Toast.makeText(MainActivity.this, "Registration succeed.",
-                            Toast.LENGTH_SHORT).show();
-                    FirebaseUser user = mAuth.getCurrentUser();
+        final String[] errorMessage = {new String()};
+        //Error checking prior to logging in
+        //Empty email field
+        if (isEmailEmpty(userEmail)) {
+            errorMessage[0] = "Email field required";
+        }
+        //Invalid email
+        else if (isEmailValid(userEmail) == false) {
+            errorMessage[0] = "Invalid email address";
+        }
+        else {
+            mAuth.createUserWithEmailAndPassword(userEmail, userPassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        // Sign up success, update UI with the signed-up user's information
+                        // This is adding users into the authentication section of Firebase
+                        errorMessage[0] = "Registration succeed.";
+                        FirebaseUser user = mAuth.getCurrentUser();
 
-                    // This is record user's email and password to the database (kinda redundant)
-                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
-                    Hashtable<String,String> record = new Hashtable<>();
-                    record.put("email", userEmail);
-                    record.put("password",userPassword);
-                    ref.child(user.getUid()).setValue(record);
+                        // This is record user's email and password to the database (kinda redundant)
+                        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
+                        Hashtable<String, String> record = new Hashtable<>();
+                        record.put("email", userEmail);
+                        record.put("password", userPassword);
+                        ref.child(user.getUid()).setValue(record);
 
 
-                    //update UI and move to next activity
-                } else {
-                    // If sign up fails, display a message to the user.
-                    Toast.makeText(MainActivity.this, "Registration failed.",
-                            Toast.LENGTH_SHORT).show();
-                    //update UI and move to next activity
+                        //update UI and move to next activity
+                    } else {
+                        // If sign up fails, display a message to the user.
+                        errorMessage[0] = "Registration failed.";
+                        //update UI and move to next activity
+                    }
                 }
-            }
-        });
+            });
+        }
+        setMessage(errorMessage[0]);
     }
 
 }
