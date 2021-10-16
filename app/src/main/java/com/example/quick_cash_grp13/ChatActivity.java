@@ -9,10 +9,12 @@ public class ChatActivity {
     //....
 
     //Example notifications for when the chat is implemented
+
+    /**
     NotificationCompat.Builder builder = new NotificationCompat.Builder(this, R.string.job_posting_response_id)
             .setSmallIcon(R.drawable.ic_job_posting_response)
             .setContentTitle("Job ID #12345")
             .setContentText("Smith replied to your job posting")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-
+    */
 }
