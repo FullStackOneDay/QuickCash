@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -68,42 +69,56 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    //check if email is empty
+    //checks if email is empty
     protected boolean isEmailEmpty(String email) {
         return email.isEmpty();
     }
 
-    //check if email is valid
+    //checks if email is valid by ensuring it contains @ sign
     protected boolean isEmailValid(String email) {
         return !isEmailEmpty(email) && email.contains("@");
     }
 
-    public void loginCheck(String email, String userPassword){
-        if (isEmailEmpty(email)) {
-            Toast.makeText(MainActivity.this, "Email field required.", Toast.LENGTH_SHORT).show();
-        }
-        else if (isEmailValid(email) == false) {
-            Toast.makeText(MainActivity.this, "Invalid email address.", Toast.LENGTH_SHORT).show();
-        }
-        mAuth.signInWithEmailAndPassword(email, userPassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(MainActivity.this,"Login succeed",Toast.LENGTH_SHORT).show();
-                    // Sign in success, update UI with the signed-in user's information
-                    FirebaseUser user = mAuth.getCurrentUser();
-                    //update UI and move to next activity
-                    //Start next activity
-                    Intent home = new Intent(getApplicationContext(),HomeActivity.class);
-                    startActivity(home);
+    //sets the text of the error message TextView
+    protected void setMessage(String msg) {
+        TextView errMsg = (TextView) findViewById(R.id.errMsg);
+        errMsg.setText(msg);
+    }
 
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Toast.makeText(MainActivity.this, "Authentication failed.",
-                            Toast.LENGTH_SHORT).show();
+    //User login if user is already registered
+    public void loginCheck(String email, String userPassword){
+        final String[] errorMessage = {new String()};
+        //Error checking prior to logging in
+        //Empty email field
+        if (isEmailEmpty(email)) {
+            errorMessage[0] = "Email field required";
+        }
+        //Invalid email
+        else if (isEmailValid(email) == false) {
+            errorMessage[0] = "Invalid email address";
+        }
+        else {
+            mAuth.signInWithEmailAndPassword(email, userPassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        errorMessage[0] = "Login succeed";
+                        Toast.makeText(MainActivity.this, "Login succeed", Toast.LENGTH_SHORT).show();
+                        // Sign in success, update UI with the signed-in user's information
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        //update UI and move to next activity
+                        //Start next activity
+                        Intent home = new Intent(getApplicationContext(), HomeActivity.class);
+                        startActivity(home);
+
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        errorMessage[0] = "Authentication failed";
+                    }
                 }
-            }
-        });
+            });
+        }
+        setMessage(errorMessage[0]);
     }
 
     public void registerCheck(String userEmail, String userPassword){

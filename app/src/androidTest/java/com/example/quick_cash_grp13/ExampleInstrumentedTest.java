@@ -1,6 +1,7 @@
 package com.example.quick_cash_grp13;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.intent.Intents.intended;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent;
@@ -51,35 +52,31 @@ public class ExampleInstrumentedTest {
     @Test
     public void checkLoginWithEmptyEmail() {
         onView(withId(R.id.loginEmail)).perform(typeText(""));
-        onView(withId(R.id.loginPassword)).perform(typeText("xyz123"));
+        onView(withId(R.id.loginPassword)).perform(typeText("xyz123")).perform(closeSoftKeyboard());
         onView(withId(R.id.loginCheck)).perform(click());
-
+        onView(withId(R.id.errMsg)).check(matches(withText("Email field required")));
     }
 
     @Test
     public void checkLoginWithInvalidEmail() {
         onView(withId(R.id.loginEmail)).perform(typeText("abc123.gmail.com"));
-        onView(withId(R.id.loginPassword)).perform(typeText("xyz123"));
+        onView(withId(R.id.loginPassword)).perform(typeText("xyz123")).perform(closeSoftKeyboard());
         onView(withId(R.id.loginCheck)).perform(click());
-
+        onView(withId(R.id.errMsg)).check(matches(withText("Invalid email address")));
     }
 
     @Test
     public void checkLoginWithIncorrectCredentials() {
-        onView(withId(R.id.loginEmail)).perform(typeText("abc123@gmail.com"));
-        onView(withId(R.id.loginPassword)).perform(typeText("xyz123"));
-        onView(withId(R.id.registerCheck)).perform(click());
-        onView(withId(R.id.loginEmail)).perform(typeText("abc123@gmail.com"));
-        onView(withId(R.id.loginPassword)).perform(typeText("xyz123"));
+        onView(withId(R.id.loginEmail)).perform(typeText("abc124@gmail.com"));
+        onView(withId(R.id.loginPassword)).perform(typeText("xyz123")).perform(closeSoftKeyboard());
         onView(withId(R.id.loginCheck)).perform(click());
-
+        onView(withId(R.id.errMsg)).check(matches(withText("Authentication failed")));
     }
-
 
     @Test
     public void checkLoginWithCorrectCredentials() {
         onView(withId(R.id.loginEmail)).perform(typeText("abc123@gmail.com"));
-        onView(withId(R.id.loginPassword)).perform(typeText("xyz123"));
+        onView(withId(R.id.loginPassword)).perform(typeText("xyz123")).perform(closeSoftKeyboard());
         onView(withId(R.id.loginCheck)).perform(click());
         intended(hasComponent(HomeActivity.class.getName()));
     }
