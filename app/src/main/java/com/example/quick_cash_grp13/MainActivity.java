@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //intent switcher to home page
-    protected void switch2HomeActivity() {
+    protected void switch2LandingPage() {
         Intent home = new Intent(this, HomeActivity.class);
         startActivity(home);
     }
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                         FirebaseUser user = mAuth.getCurrentUser();
                         //update UI and move to next activity
                         //Start next activity
-                        switch2HomeActivity();
+                        switch2LandingPage();
 
                     } else {
                         // If sign in fails, display a message to the user.

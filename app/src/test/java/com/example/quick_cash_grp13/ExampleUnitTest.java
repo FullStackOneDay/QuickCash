@@ -12,7 +12,13 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
-    static MainActivity mainActivity;
+
+    @Test
+    public void addition_isCorrect() {
+        assertEquals(4, 2 + 2);
+    }
+
+    /*static MainActivity mainActivity;
 
     @BeforeClass
     public static void setup() {
@@ -24,41 +30,36 @@ public class ExampleUnitTest {
         System.gc();
     }
 
-    @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
-    }
-
-    /**
+    *//**
      * check for empty email
-     */
+     *//*
     @Test
     public void checkEmailIsEmpty() {
         assertTrue(mainActivity.isEmailEmpty(""));
     }
 
-    /**
+    *//**
      * check for nonempty email
-     */
+     *//*
     @Test
     public void checkEmailIsNotEmpty() {
         assertFalse(mainActivity.isEmailEmpty("qwerty123@dal.ca"));
     }
 
-    /**
+    *//**
      * check for valid email
-     */
+     *//*
     @Test
     public void checkEmailIsValid() {
         assertTrue(mainActivity.isEmailValid("qwerty123@dal.ca"));
     }
 
-    /**
+    *//**
      * check for invalid email
-     */
+     *//*
     @Test
     public void checkEmailIsInvalid() {
         assertFalse(mainActivity.isEmailValid("abc123gmail.com"));
     }
-
+*/
 }
