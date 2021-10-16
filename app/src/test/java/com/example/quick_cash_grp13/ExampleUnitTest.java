@@ -29,21 +29,33 @@ public class ExampleUnitTest {
         assertEquals(4, 2 + 2);
     }
 
+    /**
+     * check for empty email
+     */
     @Test
     public void checkEmailIsEmpty() {
         assertTrue(mainActivity.isEmailEmpty(""));
     }
 
+    /**
+     * check for nonempty email
+     */
     @Test
     public void checkEmailIsNotEmpty() {
         assertFalse(mainActivity.isEmailEmpty("qwerty123@dal.ca"));
     }
 
+    /**
+     * check for valid email
+     */
     @Test
     public void checkEmailIsValid() {
         assertTrue(mainActivity.isEmailValid("qwerty123@dal.ca"));
     }
 
+    /**
+     * check for invalid email
+     */
     @Test
     public void checkEmailIsInvalid() {
         assertFalse(mainActivity.isEmailValid("abc123gmail.com"));

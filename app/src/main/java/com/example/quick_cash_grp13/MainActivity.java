@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         errMsg.setText(msg);
     }
 
-    //intent switcher
+    //intent switcher to home page
     protected void switch2HomeActivity() {
         Intent home = new Intent(this, HomeActivity.class);
         startActivity(home);
