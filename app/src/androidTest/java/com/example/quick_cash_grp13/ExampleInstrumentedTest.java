@@ -96,8 +96,8 @@ public class ExampleInstrumentedTest {
     @Test
     public void checkIfRegistrationPageIsVisible() {
         onView(withId(R.id.textView)).check(matches(withText(R.string.quick_cash_login)));
-        onView(withId(R.id.loginUserName)).check(matches(withText(R.string.EMPTY_STRING)));
-        onView(withId(R.id.loginUserName)).check(matches(withText(R.string.EMPTY_STRING)));
+        onView(withId(R.id.loginEmail)).check(matches(withText(R.string.EMPTY_STRING)));
+        onView(withId(R.id.loginEmail)).check(matches(withText(R.string.EMPTY_STRING)));
         onView(withId(R.id.loginCheck)).check(matches(withText(R.string.login)));
         onView(withId(R.id.registerCheck)).check(matches(withText(R.string.register)));
     }

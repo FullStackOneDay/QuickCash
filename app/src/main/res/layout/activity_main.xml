@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/loginUserName"
+        android:id="@+id/loginEmail"
         android:layout_width="286dp"
         android:layout_height="64dp"
         android:layout_marginTop="46dp"
@@ -35,7 +35,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginUserName"
+        app:layout_constraintTop_toBottomOf="@+id/loginEmail"
         android:importantForAutofill="no" />
 
     <Button
@@ -69,7 +69,7 @@
         android:text="@string/quick_cash_login"
         android:textSize="30sp"
         android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/loginUserName"
+        app:layout_constraintBottom_toTopOf="@+id/loginEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
