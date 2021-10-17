@@ -7,4 +7,32 @@
     <string name="register">register</string>
     <string name="email_address">email_address</string>
     <string name="EMPTY_STRING"></string>
+
+    <string name="fill_out_this_form_to_post_a_job_listing">Fill out this form to post a Job listing!</string>
+    <string name="job_title">Job Title</string>
+    <string name="company">Company</string>
+    <string name="location">Location</string>
+    <string name="salary">Salary</string>
+    <string name="monthly">Monthly</string>
+    <string name="yearly">Yearly</string>
+    <string name="post_job">Post Job</string>
+    <string-array name="fieldArray">
+        <item>Architecture and Engineering</item>
+        <item>Arts and Entertainment</item>
+        <item>Business and Administration</item>
+        <item>Communications</item>
+        <item>Community and Social Services</item>
+        <item>Education</item>
+        <item>Science and Tech.</item>
+        <item>Installation, Repair, Maintenance</item>
+        <item>Farming, Fishing, Forestry</item>
+        <item>Government</item>
+        <item>Health and Medicine</item>
+        <item>Law</item>
+        <item>Sales</item>
+    </string-array>>
+
+    <string name="job_posting_response">Job Posting Response</string>
+    <string name="job_posting_response_id">job_posting_response</string>
+
 </resources>
