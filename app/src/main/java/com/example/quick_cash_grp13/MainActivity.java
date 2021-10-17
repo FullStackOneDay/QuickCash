@@ -87,8 +87,8 @@ public class MainActivity extends AppCompatActivity {
 
     //intent switcher to home page
     protected void switch2LandingPage() {
-        Intent home = new Intent(this, HomeActivity.class);
-        startActivity(home);
+        Intent landingPage = new Intent(this, LandingPage.class);
+        startActivity(landingPage);
     }
 
     //User login if user is already registered
