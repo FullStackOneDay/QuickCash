@@ -7,4 +7,6 @@
     <string name="register">register</string>
     <string name="email_address">email_address</string>
     <string name="EMPTY_STRING"></string>
+    <string name="job_posting_response">Job Posting Response</string>
+    <string name="job_posting_response_id">job_posting_response</string>
 </resources>
