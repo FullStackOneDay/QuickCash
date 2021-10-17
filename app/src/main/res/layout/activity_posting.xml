@@ -20,7 +20,7 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"
-        android:hint="Job Title"
+        android:hint="@string/job_title"
         android:inputType="text"
         app:layout_constraintTop_toBottomOf="@+id/postAJob"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +28,7 @@
         />
     <EditText
         android:id="@+id/company"
-        android:hint="Company"
+        android:hint="@string/company"
         android:inputType="text"
         android:layout_width="300dp"
         android:layout_height="50dp"
@@ -39,7 +39,7 @@
         />
     <EditText
         android:id="@+id/location"
-        android:hint="Location"
+        android:hint="@string/location"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -63,7 +63,7 @@
         android:layout_height="50dp"
         android:layout_marginVertical="10dp"
         android:layout_marginStart="10dp"
-        android:hint="Salary"
+        android:hint="@string/salary"
         android:inputType="number"
         app:layout_constraintEnd_toStartOf="@+id/salaryType"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +82,7 @@
         >
         <RadioButton
             android:id="@+id/monthly"
-            android:text="Monthly"
+            android:text="@string/monthly"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/hourly"
             android:layout_height="match_parent"
@@ -91,7 +91,7 @@
             />
         <RadioButton
             android:id="@+id/hourly"
-            android:text="Yearly"
+            android:text="@string/yearly"
             app:layout_constraintStart_toEndOf="@+id/monthly"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_height="match_parent"
@@ -101,7 +101,7 @@
 
     <Button
         android:id="@+id/postJobButton"
-        android:text="Post Job"
+        android:text="@string/post_job"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/salaryType"
