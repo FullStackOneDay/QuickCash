@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     // Sign up success, update UI with the signed-up user's information
                     // This is adding users into the authentication section of Firebase
-                    Toast.makeText(MainActivity.this, "Registration succeed.",
+                    Toast.makeText(MainActivity.this, "Registration succeeded.",
                             Toast.LENGTH_SHORT).show();
                     FirebaseUser user = mAuth.getCurrentUser();
 
