@@ -49,9 +49,9 @@ public class createPostActivity extends Activity {
                 Job job;
                 //create a job from field data and push it to a list on the database
                 if(monthlySalary) { //salary is monthly,
-                    job = new Job(jobTitleText, companyText, locationText, fieldText, (int)salaryAmount);
+                    job = new Job(jobTitleText, companyText, fieldText, locationText, (int)salaryAmount);
                 } else {    //salary is hourly
-                    job = new Job(jobTitleText, companyText, locationText, fieldText, salaryAmount);
+                    job = new Job(jobTitleText, companyText, fieldText, locationText, salaryAmount);
                 }
                 jobRef.push().setValue(job);
             }
