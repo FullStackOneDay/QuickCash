@@ -30,9 +30,11 @@
         <item>Health and Medicine</item>
         <item>Law</item>
         <item>Sales</item>
-    </string-array>>
+    </string-array>
+    >
 
     <string name="job_posting_response">Job Posting Response</string>
     <string name="job_posting_response_id">job_posting_response</string>
+    <string name="title_activity_map">MapActivity</string>
 
 </resources>
