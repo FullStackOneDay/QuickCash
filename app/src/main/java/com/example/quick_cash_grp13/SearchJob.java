@@ -10,6 +10,13 @@ public class SearchJob {
         this.jobs = jobs;
     }
 
+    @Override
+    public String toString() {
+        return "SearchJob{" +
+                "jobs=" + jobs +
+                "}\n";
+    }
+
     public ArrayList<Job> getJobs() {
         return jobs;
     }
@@ -18,12 +25,22 @@ public class SearchJob {
         this.jobs = jobs;
     }
 
+    // add one job
+    public void addJob(Job jobAdd){
+        jobs.add(jobAdd);
+    }
+
+    // add an arraylist of jobs
+    public void addJobs(ArrayList<Job> jobsAdd){
+        jobs.addAll(jobsAdd);
+    }
+
     //Method that returns an ArrayList of jobs that have titles that contain the users' search.
     public ArrayList<Job> searchByTitle(String title){
         // TODO
         ArrayList<Job> jobSearched = new ArrayList<>();
         for (Job job : jobs){
-            if(job.getJobTitle().toLowerCase().contains(title)){
+            if(job.getJobTitle().toLowerCase().contains(title.toLowerCase())){
                 jobSearched.add(job);
             }
         }
@@ -35,7 +52,7 @@ public class SearchJob {
         // TODO
         ArrayList<Job> fieldSearched = new ArrayList<>();
         for(Job job : jobs){
-            if(job.getField().toLowerCase().contains(field)){
+            if(job.getField().toLowerCase().contains(field.toLowerCase())){
                 fieldSearched.add(job);
             }
         }
@@ -47,7 +64,7 @@ public class SearchJob {
         // TODO
         ArrayList<Job> companySearched = new ArrayList<>();
         for(Job job : jobs){
-            if(job.getCompany().toLowerCase().contains(company)){
+            if(job.getCompany().toLowerCase().contains(company.toLowerCase())){
                 companySearched.add(job);
             }
         }
@@ -59,7 +76,7 @@ public class SearchJob {
         // TODO
         ArrayList<Job> locationSearched = new ArrayList<>();
         for(Job job : jobs){
-            if(job.getLocation().toLowerCase().contains(location)){
+            if(job.getLocation().toLowerCase().contains(location.toLowerCase())){
                 locationSearched.add(job);
             }
         }
