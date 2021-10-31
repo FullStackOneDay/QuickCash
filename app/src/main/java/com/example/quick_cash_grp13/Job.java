@@ -96,6 +96,6 @@ public class Job {
                 '}';
 
          */
-        return field + ": " + jobTitle + " in " + location;
+        return field + ": " + jobTitle + " in " + location + ". The salary is: " + salary;
     }
 }
