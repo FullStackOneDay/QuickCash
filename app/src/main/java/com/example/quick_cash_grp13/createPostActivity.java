@@ -28,7 +28,7 @@ public class createPostActivity extends Activity {
         EditText salary = (EditText) findViewById(R.id.salary);
         Button submit = (Button) findViewById(R.id.postJobButton);
         RadioButton monthly = findViewById(R.id.monthly);
-        //create field dropdown menue
+        //create field dropdown menu
         Spinner field = (Spinner) findViewById(R.id.fieldSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.fieldArray, R.layout.support_simple_spinner_dropdown_item);
         field.setAdapter(adapter);
@@ -45,11 +45,11 @@ public class createPostActivity extends Activity {
                 double salaryAmount = Double.parseDouble(salary.getText().toString());
                 boolean monthlySalary = monthly.isChecked();
 
-
                 Job job;
                 //create a job from field data and push it to a list on the database
                 if(monthlySalary) { //salary is monthly,
                     job = new Job(jobTitleText, companyText, fieldText, locationText, (int)salaryAmount);
+                    Job.allJobs.add(job);
                 } else {    //salary is hourly
                     job = new Job(jobTitleText, companyText, fieldText, locationText, salaryAmount);
                 }

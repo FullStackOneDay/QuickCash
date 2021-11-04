@@ -30,7 +30,7 @@ public class HomeActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView);
         list = new ArrayList<>();
         Job first = new Job("Developer","Google","IT","Halifax",20.0);
-        Job second = new Job("Engineer","Microsoft","IT","Halifax",25.0);
+        Job second = new Job("Engineer","Microsoft","IT","Halifax,",25.0);
         Job third = new Job("Researcher","Dalhousie","Communication","Mars",25.0);
         list.add(first);
         list.add(second);

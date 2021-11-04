@@ -34,7 +34,8 @@
         <activity
             android:name=".MapActivity"
             android:exported="true"
-            android:label="@string/title_activity_map" />
+            android:label="@string/title_activity_map"
+            />
         <activity
             android:name=".HomeActivity"
             android:exported="true" />

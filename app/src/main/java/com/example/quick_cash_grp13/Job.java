@@ -2,7 +2,11 @@ package com.example.quick_cash_grp13;
 
 import androidx.annotation.NonNull;
 
+import java.util.ArrayList;
+
 public class Job {
+
+    public static ArrayList<Job> allJobs = new ArrayList<Job>();
 
     private String jobTitle;
     private String company;
@@ -20,6 +24,7 @@ public class Job {
         this.field = field;
         this.location = location;
         this.salary = salary;
+
     }
 
     public Job(String jobTitle, String company, String field, String location) {
@@ -35,6 +40,11 @@ public class Job {
         this.field = field;
         this.location = location;
         this.salary_month = salary_month;
+    }
+
+    //needed so maps activity wont crash?
+    public Job() {
+
     }
 
     public String getJobTitle() {
