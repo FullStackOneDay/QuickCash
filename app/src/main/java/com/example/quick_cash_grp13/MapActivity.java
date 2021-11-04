@@ -98,13 +98,14 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         mMap = googleMap;
 
         //this will add a pin to the map for every job in the database
+        //not yet working
         jobRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
                 Job job = dataSnapshot.getValue(Job.class);
 
                 String location = job.getLocation();
-
+                System.out.println(location);
                 //get job address from location string
                 List<Address> addressList = null;
                 if(location != null || !location.equals("")) {
