@@ -2,8 +2,11 @@ package com.example.quick_cash_grp13;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Filter;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -19,6 +22,7 @@ public class HomeActivity extends AppCompatActivity {
     ListView listView;
     ArrayList<Job> list;
     ArrayAdapter<Job> adapter;
+    Button jobMap;
 
 
     @Override
@@ -28,6 +32,8 @@ public class HomeActivity extends AppCompatActivity {
 
         searchView = (SearchView) findViewById(R.id.searchView);
         listView = (ListView) findViewById(R.id.listView);
+        jobMap = (Button) findViewById(R.id.gotoMap);
+
         list = new ArrayList<>();
         Job first = new Job("Developer","Google","IT","Halifax",20.0);
         Job second = new Job("Engineer","Microsoft","IT","Halifax,",25.0);
@@ -58,7 +64,13 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-
+        jobMap.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MapActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

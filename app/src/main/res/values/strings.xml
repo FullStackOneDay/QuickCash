@@ -36,5 +36,6 @@
     <string name="job_posting_response">Job Posting Response</string>
     <string name="job_posting_response_id">job_posting_response</string>
     <string name="title_activity_map">MapActivity</string>
+    <string name="see_job_map">See Job Map</string>
 
 </resources>
