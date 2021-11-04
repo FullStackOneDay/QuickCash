@@ -87,28 +87,27 @@ public class MainActivity extends AppCompatActivity {
 
     //intent switcher to home page
     protected void switch2LandingPage() {
-        Intent home = new Intent(this, HomeActivity.class);
-        startActivity(home);
+        Intent landingPage = new Intent(this, LandingPage.class);
+        startActivity(landingPage);
     }
 
     //User login if user is already registered
     public void loginCheck(String email, String userPassword){
-        final String[] errorMessage = {new String()};
         //Error checking prior to logging in
         //Empty email field
         if (isEmailEmpty(email)) {
-            errorMessage[0] = "Email field required";
+            setMessage("Email field required");
         }
         //Invalid email
         else if (isEmailValid(email) == false) {
-            errorMessage[0] = "Invalid email address";
+            setMessage("Invalid email address");
         }
         else {
             mAuth.signInWithEmailAndPassword(email, userPassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-                        errorMessage[0] = "Login succeed";
+                        setMessage("Login succeed");
                         Toast.makeText(MainActivity.this, "Login succeed", Toast.LENGTH_SHORT).show();
                         // Sign in success, update UI with the signed-in user's information
                         FirebaseUser user = mAuth.getCurrentUser();
@@ -118,24 +117,22 @@ public class MainActivity extends AppCompatActivity {
 
                     } else {
                         // If sign in fails, display a message to the user.
-                        errorMessage[0] = "Authentication failed";
+                        setMessage("Authentication failed");
                     }
                 }
             });
         }
-        setMessage(errorMessage[0]);
     }
 
     public void registerCheck(String userEmail, String userPassword){
-        final String[] errorMessage = {new String()};
         //Error checking prior to logging in
         //Empty email field
         if (isEmailEmpty(userEmail)) {
-            errorMessage[0] = "Email field required";
+            setMessage("Email field required");
         }
         //Invalid email
         else if (isEmailValid(userEmail) == false) {
-            errorMessage[0] = "Invalid email address";
+            setMessage("Invalid email address");
         }
         else {
             mAuth.createUserWithEmailAndPassword(userEmail, userPassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -144,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         // Sign up success, update UI with the signed-up user's information
                         // This is adding users into the authentication section of Firebase
-                        errorMessage[0] = "Registration succeed.";
+                        setMessage("Registration succeed");
                         FirebaseUser user = mAuth.getCurrentUser();
 
                         // This is record user's email and password to the database (kinda redundant)
@@ -158,13 +155,12 @@ public class MainActivity extends AppCompatActivity {
                         //update UI and move to next activity
                     } else {
                         // If sign up fails, display a message to the user.
-                        errorMessage[0] = "Registration failed.";
+                        setMessage("Registration failed");
                         //update UI and move to next activity
                     }
                 }
             });
         }
-        setMessage(errorMessage[0]);
     }
 
 }
