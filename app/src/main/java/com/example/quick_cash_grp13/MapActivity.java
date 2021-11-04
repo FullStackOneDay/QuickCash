@@ -22,6 +22,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.quick_cash_grp13.databinding.ActivityMapBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -61,21 +62,10 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         mSearchText.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                String location = mSearchText.getQuery().toString();
-                List<Address> addressList = null;
-                if(location != null || !location.equals("")) {
-                    Geocoder geo = new Geocoder(MapActivity.this);
-                    try {
-                        addressList = geo.getFromLocationName(location, 1);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    Address address = addressList.get(0);
-                    LatLng exactLoc = new LatLng(address.getLatitude(), address.getLongitude());
-                    //move camera to the submitted address
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(exactLoc));
-                    mMap.animateCamera(CameraUpdateFactory.zoomTo(5));
-                }
+                String locationString = mSearchText.getQuery().toString();
+                LatLng location = latLngFromString(locationString)
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(5));
                 return false;
             }
 
@@ -98,28 +88,17 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         mMap = googleMap;
 
         //this will add a pin to the map for every job in the database
-        //not yet working
         jobRef.addChildEventListener(new ChildEventListener() {
+            private ArrayList<Marker> markers = new ArrayList<>();
+
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
                 Job job = dataSnapshot.getValue(Job.class);
+                String locationString = job.getLocation();
+                LatLng location = latLngFromString(locationString);
 
-                String location = job.getLocation();
-                System.out.println(location);
-                //get job address from location string
-                List<Address> addressList = null;
-                if(location != null || !location.equals("")) {
-                    Geocoder geo = new Geocoder(MapActivity.this);
-                    try {
-                        addressList = geo.getFromLocationName(location, 1);
-                        Address address = addressList.get(0);
-                        LatLng exactLoc = new LatLng(address.getLatitude(), address.getLongitude());
-                        //add a marker for the job containing its title and pay
-                        mMap.addMarker(new MarkerOptions().position(exactLoc).title(job.getJobTitle()).snippet("Salary" + job.getSalary()));
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
+                //add a marker to the map, and add the returned marker to a list of markers
+                markers.add(mMap.addMarker(new MarkerOptions().position(location).title(job.getJobTitle()).snippet("Salary" + job.getSalary())));
             }
 
             @Override
@@ -145,25 +124,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
         });
 
-//    Job job = new Job("TESTTitle", "TESTCompany", "TEST",  "6299 South St, Halifax", 1000);
-//    String location = job.getLocation();
-//
-//    //get job address from location string
-//    List<Address> addressList = null;
-//    if(location != null || !location.equals("")) {
-//        Geocoder geo = new Geocoder(MapActivity.this);
-//        try {
-//            addressList = geo.getFromLocationName(location, 1);
-//            Address address = addressList.get(0);
-//            LatLng exactLoc = new LatLng(address.getLatitude(), address.getLongitude());
-//            //add a marker for the job containing its title and pay
-//            mMap.addMarker(new MarkerOptions().position(exactLoc).title(job.getJobTitle()).snippet("Salary: " + job.getSalary()));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//    }
-
     }
 
 
@@ -181,6 +141,25 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         database = FirebaseDatabase.getInstance();
          jobRef = database.getReference("jobs");
 
+    }
+
+    //Searches the input string to find a google maps address.
+    private LatLng latLngFromString(String locationString) {
+        List<Address> addressList = null;
+        Geocoder geo = new Geocoder(MapActivity.this);
+
+        if(locationString != null || !locationString.equals("")) {
+            try {
+                addressList = geo.getFromLocationName(locationString, 1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Address address = addressList.get(0);
+            LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+            return latLng;
+        }
+      return null;
     }
 
 
