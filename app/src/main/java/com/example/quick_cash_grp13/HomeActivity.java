@@ -1,20 +1,24 @@
 package com.example.quick_cash_grp13;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
-import android.widget.Filter;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import android.os.Bundle;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-public class HomeActivity extends AppCompatActivity {
-
+public class HomeActivity extends AppCompatActivity  {
+    static String jobCom;
     SearchView searchView;
     ListView listView;
     ArrayList<Job> list;
@@ -25,6 +29,10 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        // initializeDatabase();
+
+
 
         searchView = (SearchView) findViewById(R.id.searchView);
         listView = (ListView) findViewById(R.id.listView);
@@ -60,6 +68,31 @@ public class HomeActivity extends AppCompatActivity {
 
 
     }
+
+    // initialize database
+    // TODO
+    /*
+    protected void initializeDatabase(){
+        FirebaseDatabase db = FirebaseDatabase.getInstance("https://quick-cash-grp13-default-rtdb.firebaseio.com/");
+        DatabaseReference reference1 = db.getReference("jobs");
+        Toast.makeText(HomeActivity.this,"Firebase connection success", Toast.LENGTH_LONG).show();
+        reference1.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot adSnapshot: snapshot.getChildren()) {
+                    Job job = adSnapshot.getValue(Job.class);
+                    Toast.makeText(getApplicationContext(), job.toString(), Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+        //initialize the database and the two references related to banner ID and email address.
+    }*/
 
 
 }
