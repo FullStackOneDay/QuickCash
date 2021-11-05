@@ -8,10 +8,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import org.w3c.dom.Text;
 
 public class createPostActivity extends Activity {
     private FirebaseDatabase database;
@@ -32,6 +35,7 @@ public class createPostActivity extends Activity {
         Spinner field = (Spinner) findViewById(R.id.fieldSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.fieldArray, R.layout.support_simple_spinner_dropdown_item);
         field.setAdapter(adapter);
+        TextView outMsg = (TextView) findViewById(R.id.outputMsg);
 
         //create a job posting when button is pressed
         submit.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +49,10 @@ public class createPostActivity extends Activity {
                 double salaryAmount = Double.parseDouble(salary.getText().toString());
                 boolean monthlySalary = monthly.isChecked();
 
+                if (jobTitleText.isEmpty() || companyText.isEmpty() || locationText.isEmpty()
+                        || fieldText.isEmpty() || salaryAmount < 0) {
+                    outMsg.setText("Missing Required Fields.");
+                }
 
                 Job job;
                 //create a job from field data and push it to a list on the database
@@ -54,6 +62,7 @@ public class createPostActivity extends Activity {
                     job = new Job(jobTitleText, companyText, locationText, fieldText, salaryAmount);
                 }
                 jobRef.push().setValue(job);
+                outMsg.setText("Job posted successfully!");
             }
         });
 
