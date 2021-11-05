@@ -18,7 +18,7 @@ import org.w3c.dom.Text;
 
 public class createPostActivity extends Activity {
     private FirebaseDatabase database;
-    private  DatabaseReference jobRef;
+    private DatabaseReference jobRef;
     private FirebaseAuth mAuth;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,20 +53,25 @@ public class createPostActivity extends Activity {
                         || fieldText.isEmpty() || salaryAmount < 0) {
                     outMsg.setText("Missing Required Fields.");
                 }
-
-                Job job;
-                //create a job from field data and push it to a list on the database
-                if(monthlySalary) { //salary is monthly,
-                    job = new Job(jobTitleText, companyText, locationText, fieldText, (int)salaryAmount);
-                } else {    //salary is hourly
-                    job = new Job(jobTitleText, companyText, locationText, fieldText, salaryAmount);
+                else {
+                    Job job;
+                    //create a job from field data and push it to a list on the database
+                    if(monthlySalary) { //salary is monthly,
+                        job = new Job(jobTitleText, companyText, locationText, fieldText, (int)salaryAmount);
+                    } else {    //salary is hourly
+                        job = new Job(jobTitleText, companyText, locationText, fieldText, salaryAmount);
+                    }
+                    jobRef.push().setValue(job);
+                    outMsg.setText("Job posted successfully!");
                 }
-                jobRef.push().setValue(job);
-                outMsg.setText("Job posted successfully!");
             }
         });
 
         initializeDatabase();
+    }
+
+    public String[] getFieldsArray(){
+        return getResources().getStringArray(R.array.fieldArray);
     }
 
     private void initializeDatabase() {
