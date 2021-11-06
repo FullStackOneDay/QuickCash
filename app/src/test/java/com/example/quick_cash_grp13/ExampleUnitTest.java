@@ -62,4 +62,19 @@ public class ExampleUnitTest {
         assertFalse(mainActivity.isEmailValid("abc123gmail.com"));
     }
 */
+    @Test
+    public void checkNotificationNameIsNotEmpty() {
+        assertNotEquals(CreateNotificationChannel.getNotificationName(), "");
+    }
+
+    @Test
+    public void checkNotificationIdIsNotEmpty() {
+        assertNotEquals(CreateNotificationChannel.getNotificationId(), "");
+    }
+
+    @Test
+    public void checkNotificationImportanceIsNotEmpty() {
+        assertNotEquals(CreateNotificationChannel.getNotificationImportance(), -1);
+    }
+
 }
