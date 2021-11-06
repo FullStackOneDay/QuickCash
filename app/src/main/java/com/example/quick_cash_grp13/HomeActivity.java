@@ -18,6 +18,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class HomeActivity extends AppCompatActivity  {
+    ArrayList<Job> jobs = new ArrayList<>();
+
     static String jobCom;
     SearchView searchView;
     ListView listView;
@@ -30,28 +32,26 @@ public class HomeActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // initializeDatabase();
+        initializeDatabase();
 
 
 
         searchView = (SearchView) findViewById(R.id.searchView);
-        listView = (ListView) findViewById(R.id.listView);
-        list = new ArrayList<>();
-        Job first = new Job("Developer","Google","IT","Halifax",20.0);
-        Job second = new Job("Engineer","Microsoft","IT","Halifax",25.0);
-        Job third = new Job("Researcher","Dalhousie","Communication","Mars",25.0);
-        list.add(first);
-        list.add(second);
-        list.add(third);
+//        list = new ArrayList<>();
+//        Job first = new Job("Developer","Google","IT","Halifax",20.0);
+//        Job second = new Job("Engineer","Microsoft","IT","Halifax",25.0);
+//        Job third = new Job("Researcher","Dalhousie","Communication","Mars",25.0);
+//        list.add(first);
+//        list.add(second);
+//        list.add(third);
+//        list.addAll(jobs);
 
-        adapter = new ArrayAdapter<Job>(this, android.R.layout.simple_list_item_1, list);
-        listView.setAdapter(adapter);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
 
-                if(list.contains(query)){
+                if(jobs.contains(query)){
                     adapter.getFilter().filter(query);
                 }else{
                     Toast.makeText(HomeActivity.this, "No Match found",Toast.LENGTH_LONG).show();
@@ -71,28 +71,32 @@ public class HomeActivity extends AppCompatActivity  {
 
     // initialize database
     // TODO
-    /*
-    protected void initializeDatabase(){
-        FirebaseDatabase db = FirebaseDatabase.getInstance("https://quick-cash-grp13-default-rtdb.firebaseio.com/");
+
+    private void initializeDatabase(){
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference reference1 = db.getReference("jobs");
         Toast.makeText(HomeActivity.this,"Firebase connection success", Toast.LENGTH_LONG).show();
+        adapter = new ArrayAdapter<Job>(this, android.R.layout.simple_list_item_1, jobs);
+
         reference1.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot adSnapshot: snapshot.getChildren()) {
                     Job job = adSnapshot.getValue(Job.class);
-                    Toast.makeText(getApplicationContext(), job.toString(), Toast.LENGTH_SHORT).show();
-
+                    jobs.add(job);
                 }
+                listView = (ListView) findViewById(R.id.listView);
+                listView.setAdapter(adapter);
+
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-        //initialize the database and the two references related to banner ID and email address.
-    }*/
+    }
 
 
 }
