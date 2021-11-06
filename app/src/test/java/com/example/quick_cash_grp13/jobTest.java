@@ -17,67 +17,67 @@ public class jobTest {
     Job job3 = new Job(jobTitle, company, field, location);
 
     @Test
-    public void getJobTitleTest(){
+    public void testGetJobTitle(){
         assertEquals(job1.getJobTitle(), jobTitle);
     }
 
     @Test
-    public void setJobTitleTest() {
+    public void testSetJobTitle() {
         job3.setJobTitle("Lawyer");
         assertEquals(job3.getJobTitle(), "Lawyer");
     }
 
     @Test
-    public void getCompanyTest(){
+    public void testGetCompany(){
         assertEquals(job1.getCompany(), company);
     }
 
     @Test
-    public void setCompanyTest() {
+    public void testSetCompany() {
         job3.setCompany("QEII");
         assertEquals(job3.getCompany(), "QEII");
     }
 
     @Test
-    public void getFieldTest(){
+    public void testGetField(){
         assertEquals(job1.getField(), field);
     }
 
     @Test
-    public void setFieldTest() {
+    public void testSetField() {
         job3.setField("Law");
         assertEquals(job3.getField(), "Law");
     }
 
     @Test
-    public void getLocationTest(){
+    public void testGetLocation(){
         assertEquals(job1.getLocation(), location);
     }
 
     @Test
-    public void setLocationTest() {
+    public void testSetLocation() {
         job3.setLocation("Toronto");
         assertEquals(job3.getLocation(), "Toronto");
     }
 
     @Test
-    public void getSalaryHrTest(){
+    public void testGetSalaryHr(){
         assertEquals(job1.getSalary(), salaryHr, 0);
     }
 
     @Test
-    public void setSalaryHrTest() {
+    public void testSetSalaryHr() {
         job1.setSalary(32.0);
         assertEquals(job1.getSalary(), 32.0, 0);
     }
 
     @Test
-    public void getSalaryMonthTest(){
+    public void testGetSalaryMonth(){
         assertEquals(job2.getSalary_month(), salaryMonth);
     }
 
     @Test
-    public void setSalaryMonthTest() {
+    public void testSetSalaryMonth() {
         job2.setSalary_month(5500);
         assertEquals(job2.getSalary_month(), 5500);
     }

@@ -13,15 +13,9 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 
-import android.content.Context;
-import android.content.Intent;
-
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 import androidx.test.espresso.intent.Intents;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.rule.ActivityTestRule;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -50,6 +44,9 @@ public class createPostActivityTest {
         System.gc();
     }
 
+    /**
+     * check if job fields are all present and job is posted
+     */
     @Test
     public void checkJobPostedSuccessfully() {
         onView(withId(R.id.jobTitle)).perform(typeText("Test Job"));
@@ -63,6 +60,9 @@ public class createPostActivityTest {
         onView(withId(R.id.outputMsg)).check(matches(withText("Job posted successfully!")));
     }
 
+    /**
+     * check if some fields are missing and appropriate message is displayed
+     */
     @Test
     public void checkJobPostedWithError() {
         onView(withId(R.id.jobTitle)).perform(typeText(""));
@@ -75,12 +75,4 @@ public class createPostActivityTest {
         onView(withId(R.id.postJobButton)).perform(click());
         onView(withId(R.id.outputMsg)).check(matches(withText("Missing Required Fields.")));
     }
-
-    /*@Test
-    public void checkSpinnerItems(){
-        for (int i = 0; i < fields.length; i++) {
-            onView(withId(R.id.fieldSpinner)).perform(click());
-            onData(is(fields[i])).check(matches(withText(fields[i])));
-        }
-    }*/
 }

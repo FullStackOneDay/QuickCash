@@ -50,7 +50,7 @@ public class createPostActivity extends Activity {
                 boolean monthlySalary = monthly.isChecked();
 
                 if (jobTitleText.isEmpty() || companyText.isEmpty() || locationText.isEmpty()
-                        || fieldText.isEmpty() || salaryAmount < 0) {
+                        || fieldText.isEmpty() || !(isSalaryValid(salaryAmount))) {
                     outMsg.setText("Missing Required Fields.");
                 }
                 else {
@@ -70,9 +70,11 @@ public class createPostActivity extends Activity {
         initializeDatabase();
     }
 
-    public String[] getFieldsArray(){
-        return getResources().getStringArray(R.array.fieldArray);
+
+    public boolean isSalaryValid(double salary) {
+        return salary > 0;
     }
+
 
     private void initializeDatabase() {
         database = FirebaseDatabase.getInstance();
