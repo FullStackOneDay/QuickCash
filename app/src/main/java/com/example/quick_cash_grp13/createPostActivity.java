@@ -8,14 +8,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.w3c.dom.Text;
+
 public class createPostActivity extends Activity {
     private FirebaseDatabase database;
-    private  DatabaseReference jobRef;
+    private DatabaseReference jobRef;
     private FirebaseAuth mAuth;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,7 @@ public class createPostActivity extends Activity {
         Spinner field = (Spinner) findViewById(R.id.fieldSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.fieldArray, R.layout.support_simple_spinner_dropdown_item);
         field.setAdapter(adapter);
+        TextView outMsg = (TextView) findViewById(R.id.outputMsg);
 
         //create a job posting when button is pressed
         submit.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +49,7 @@ public class createPostActivity extends Activity {
                 double salaryAmount = Double.parseDouble(salary.getText().toString());
                 boolean monthlySalary = monthly.isChecked();
 
+<<<<<<< HEAD
                 Job job;
                 //create a job from field data and push it to a list on the database
                 if(monthlySalary) { //salary is monthly,
@@ -52,13 +57,34 @@ public class createPostActivity extends Activity {
                     Job.allJobs.add(job);
                 } else {    //salary is hourly
                     job = new Job(jobTitleText, companyText, fieldText, locationText, salaryAmount);
+=======
+                if (jobTitleText.isEmpty() || companyText.isEmpty() || locationText.isEmpty()
+                        || fieldText.isEmpty() || !(isSalaryValid(salaryAmount))) {
+                    outMsg.setText("Missing Required Fields.");
                 }
-                jobRef.push().setValue(job);
+                else {
+                    Job job;
+                    //create a job from field data and push it to a list on the database
+                    if(monthlySalary) { //salary is monthly,
+                        job = new Job(jobTitleText, companyText, locationText, fieldText, (int)salaryAmount);
+                    } else {    //salary is hourly
+                        job = new Job(jobTitleText, companyText, locationText, fieldText, salaryAmount);
+                    }
+                    jobRef.push().setValue(job);
+                    outMsg.setText("Job posted successfully!");
+>>>>>>> origin/main
+                }
             }
         });
 
         initializeDatabase();
     }
+
+
+    public boolean isSalaryValid(double salary) {
+        return salary > 0;
+    }
+
 
     private void initializeDatabase() {
         database = FirebaseDatabase.getInstance();
