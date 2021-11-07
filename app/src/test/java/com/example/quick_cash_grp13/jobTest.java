@@ -73,12 +73,12 @@ public class jobTest {
 
     @Test
     public void testGetSalaryMonth(){
-        assertEquals(job2.getSalary_month(), salaryMonth);
+        assertEquals(job2.getSalaryMonth(), salaryMonth);
     }
 
     @Test
     public void testSetSalaryMonth() {
-        job2.setSalary_month(5500);
-        assertEquals(job2.getSalary_month(), 5500);
+        job2.setSalaryMonth(5500);
+        assertEquals(job2.getSalaryMonth(), 5500);
     }
 }
