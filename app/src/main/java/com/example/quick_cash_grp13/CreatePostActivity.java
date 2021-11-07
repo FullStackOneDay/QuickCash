@@ -16,11 +16,11 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
 
-public class createPostActivity extends Activity {
+public class CreatePostActivity extends Activity {
     private FirebaseDatabase database;
     private DatabaseReference jobRef;
-    private FirebaseAuth mAuth;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_posting);

@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.Silent.class)
 public class createPostTest {
-    public createPostActivity cpActivity = new createPostActivity();
+    public CreatePostActivity cpActivity = new CreatePostActivity();
 
     @Test
     public void checkSalaryIsValid(){

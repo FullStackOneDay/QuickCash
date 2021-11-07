@@ -16,7 +16,7 @@
             android:name=".LandingPage"
             android:exported="true" />
         <activity
-            android:name=".createPostActivity"
+            android:name=".CreatePostActivity"
             android:exported="true"/>
         <activity
             android:name=".MainActivity"
