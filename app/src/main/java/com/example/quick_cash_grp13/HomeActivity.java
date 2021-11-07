@@ -37,14 +37,7 @@ public class HomeActivity extends AppCompatActivity  {
 
 
         searchView = (SearchView) findViewById(R.id.searchView);
-//        list = new ArrayList<>();
-//        Job first = new Job("Developer","Google","IT","Halifax",20.0);
-//        Job second = new Job("Engineer","Microsoft","IT","Halifax",25.0);
-//        Job third = new Job("Researcher","Dalhousie","Communication","Mars",25.0);
-//        list.add(first);
-//        list.add(second);
-//        list.add(third);
-//        list.addAll(jobs);
+
 
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -70,13 +63,11 @@ public class HomeActivity extends AppCompatActivity  {
     }
 
     // initialize database
-    // TODO
-
     private void initializeDatabase(){
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference reference1 = db.getReference("jobs");
         Toast.makeText(HomeActivity.this,"Firebase connection success", Toast.LENGTH_LONG).show();
-        adapter = new ArrayAdapter<Job>(this, android.R.layout.simple_list_item_1, jobs);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, jobs);
 
         reference1.addValueEventListener(new ValueEventListener() {
 
@@ -94,6 +85,7 @@ public class HomeActivity extends AppCompatActivity  {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }
