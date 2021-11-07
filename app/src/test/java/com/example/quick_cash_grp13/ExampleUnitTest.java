@@ -1,6 +1,6 @@
 package com.example.quick_cash_grp13;
 
-import org.junit.Test;
+import org.junit.*;
 
 import java.util.ArrayList;
 
