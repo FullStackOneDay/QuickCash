@@ -14,6 +14,8 @@ public class Job {
     private double salary;
     private int salary_month;
 
+    public Job(){}
+
     public Job(String jobTitle, String company, String field, String location, double salary) {
         this.jobTitle = jobTitle;
         this.company = company;
@@ -96,6 +98,14 @@ public class Job {
                 '}';
 
          */
-        return field + ": " + jobTitle + " in " + location + ". The salary is: " + salary;
+        if (salary != 0 & salary_month==0) {
+            return field + ": " + jobTitle + " in " + location + ". The salary is: " + salary;
+        }
+        else if (salary == 0 & salary_month!=0) {
+            return field + ": " + jobTitle + " in " + location + ". The salary of the month is: " + salary_month;
+        }
+        else {
+            return field + ": " + jobTitle + " in " + location + ".;";
+        }
     }
 }
