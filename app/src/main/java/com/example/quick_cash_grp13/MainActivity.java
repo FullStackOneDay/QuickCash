@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
             setMessage("Email field required");
         }
         //Invalid email
-        else if (isEmailValid(email) == false) {
+        else if (!isEmailValid(email)) {
             setMessage("Invalid email address");
         }
         else {
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             setMessage("Email field required");
         }
         //Invalid email
-        else if (isEmailValid(userEmail) == false) {
+        else if (!isEmailValid(userEmail)) {
             setMessage("Invalid email address");
         }
         else {
