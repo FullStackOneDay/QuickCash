@@ -79,6 +79,5 @@ public class CreatePostActivity extends Activity {
     private void initializeDatabase() {
         database = FirebaseDatabase.getInstance();
         jobRef = database.getReference("jobs");
-        mAuth = FirebaseAuth.getInstance();
     }
 }

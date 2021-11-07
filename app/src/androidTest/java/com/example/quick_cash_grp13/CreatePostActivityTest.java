@@ -25,7 +25,7 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 
 @RunWith(AndroidJUnit4.class)
-public class createPostActivityTest {
+public class CreatePostActivityTest {
 
     @Rule
     public ActivityScenarioRule<CreatePostActivity> myRule = new ActivityScenarioRule<>(CreatePostActivity.class);
