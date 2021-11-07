@@ -1,12 +1,13 @@
 package com.example.quick_cash_grp13;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SearchJob {
 
-    private ArrayList<Job> jobs;
+    private List<Job> jobs;
 
-    public SearchJob(ArrayList<Job> jobs) {
+    public SearchJob(List<Job> jobs) {
         this.jobs = jobs;
     }
 
@@ -21,7 +22,7 @@ public class SearchJob {
         return jobs;
     }
 
-    public void setJobs(ArrayList<Job> jobs) {
+    public void setJobs(List<Job> jobs) {
         this.jobs = jobs;
     }
 
@@ -31,7 +32,7 @@ public class SearchJob {
     }
 
     // add an arraylist of jobs
-    public void addJobs(ArrayList<Job> jobsAdd){
+    public void addJobs(List<Job> jobsAdd){
         jobs.addAll(jobsAdd);
     }
 
