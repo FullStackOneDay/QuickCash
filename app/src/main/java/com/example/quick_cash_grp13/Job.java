@@ -90,18 +90,10 @@ public class Job {
     @NonNull
     @Override
     public String toString() {
-        /*return "Job{" +
-                "jobTitle='" + jobTitle + '\'' +
-                ", field='" + field + '\'' +
-                ", location='" + location + '\'' +
-                ", salary=" + salary +
-                '}';
-
-         */
-        if (salary != 0 & salaryMonth ==0) {
+        if (salary != 0 && salaryMonth ==0) {
             return field + ": " + jobTitle + " in " + location + ". The salary is: " + salary;
         }
-        else if (salary == 0 & salaryMonth !=0) {
+        else if (salary == 0 && salaryMonth !=0) {
             return field + ": " + jobTitle + " in " + location + ". The salary of the month is: " + salaryMonth;
         }
         else {
