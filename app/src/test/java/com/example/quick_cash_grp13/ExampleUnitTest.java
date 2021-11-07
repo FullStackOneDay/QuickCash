@@ -67,7 +67,7 @@ public class ExampleUnitTest {
     public void checkEmailIsInvalid() {
         assertFalse(mainActivity.isEmailValid("abc123gmail.com"));
     }
-*/
+
 
     static SearchJob searchJob;
     Job job1= new Job("Chocolate Shop Clerk","Leonidas","Sales","Halifax",12.95);
