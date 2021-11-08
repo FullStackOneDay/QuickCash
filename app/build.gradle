@@ -44,16 +44,12 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:28.4.1')
     // Declare the dependency for the Firebase Authentication library
     implementation 'com.google.firebase:firebase-auth'
-<<<<<<< HEAD
     implementation 'com.google.android.gms:play-services-maps:17.0.1'
     testImplementation 'junit:junit:4.+'
-=======
-    testImplementation 'junit:junit:4.12'
     testImplementation 'android.arch.core:core-testing:1.1.1'
     //Mockito
     testImplementation "org.mockito:mockito-inline:3.4.0"
     androidTestImplementation "android.arch.core:core-testing:1.0.0"
->>>>>>> origin/main
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     androidTestImplementation 'com.android.support.test.espresso:espresso-intents:2.2.1'

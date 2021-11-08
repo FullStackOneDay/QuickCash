@@ -63,7 +63,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             @Override
             public boolean onQueryTextSubmit(String s) {
                 String locationString = mSearchText.getQuery().toString();
-                LatLng location = latLngFromString(locationString)
+                LatLng location = latLngFromString(locationString);
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
                 mMap.animateCamera(CameraUpdateFactory.zoomTo(5));
                 return false;

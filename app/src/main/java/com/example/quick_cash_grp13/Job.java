@@ -18,7 +18,6 @@ public class Job {
     private double salary;
     private int salary_month;
 
-    public Job(){}
 
     public Job(String jobTitle, String company, String field, String location, double salary) {
         this.jobTitle = jobTitle;

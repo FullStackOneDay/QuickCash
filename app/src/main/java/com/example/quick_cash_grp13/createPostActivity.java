@@ -49,7 +49,6 @@ public class createPostActivity extends Activity {
                 double salaryAmount = Double.parseDouble(salary.getText().toString());
                 boolean monthlySalary = monthly.isChecked();
 
-<<<<<<< HEAD
                 Job job;
                 //create a job from field data and push it to a list on the database
                 if(monthlySalary) { //salary is monthly,
@@ -57,13 +56,12 @@ public class createPostActivity extends Activity {
                     Job.allJobs.add(job);
                 } else {    //salary is hourly
                     job = new Job(jobTitleText, companyText, fieldText, locationText, salaryAmount);
-=======
+
                 if (jobTitleText.isEmpty() || companyText.isEmpty() || locationText.isEmpty()
                         || fieldText.isEmpty() || !(isSalaryValid(salaryAmount))) {
                     outMsg.setText("Missing Required Fields.");
                 }
                 else {
-                    Job job;
                     //create a job from field data and push it to a list on the database
                     if(monthlySalary) { //salary is monthly,
                         job = new Job(jobTitleText, companyText, locationText, fieldText, (int)salaryAmount);
@@ -72,10 +70,9 @@ public class createPostActivity extends Activity {
                     }
                     jobRef.push().setValue(job);
                     outMsg.setText("Job posted successfully!");
->>>>>>> origin/main
                 }
             }
-        });
+        }});
 
         initializeDatabase();
     }

@@ -7,11 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
-<<<<<<< HEAD
 import android.widget.Button;
 import android.widget.Filter;
-=======
->>>>>>> origin/main
+
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -45,7 +43,7 @@ public class HomeActivity extends AppCompatActivity  {
 
 
         searchView = (SearchView) findViewById(R.id.searchView);
-<<<<<<< HEAD
+
         listView = (ListView) findViewById(R.id.listView);
         jobMap = (Button) findViewById(R.id.gotoMap);
 
@@ -59,7 +57,7 @@ public class HomeActivity extends AppCompatActivity  {
 
         adapter = new ArrayAdapter<Job>(this, android.R.layout.simple_list_item_1, list);
         listView.setAdapter(adapter);
-=======
+
 //        list = new ArrayList<>();
 //        Job first = new Job("Developer","Google","IT","Halifax",20.0);
 //        Job second = new Job("Engineer","Microsoft","IT","Halifax",25.0);
@@ -69,7 +67,7 @@ public class HomeActivity extends AppCompatActivity  {
 //        list.add(third);
 //        list.addAll(jobs);
 
->>>>>>> origin/main
+
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
