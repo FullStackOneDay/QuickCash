@@ -55,14 +55,14 @@ public class NotificationTest {
         Mockito.when(build1.getColor()).thenReturn(NotificationCompat.COLOR_DEFAULT);
 
         build2 = Mockito.mock(NotificationCompat.Builder.class);
-        Mockito.when(build1.getPriority()).thenReturn(0);
-        Mockito.when(build1.getColor()).thenReturn(13567);
+        Mockito.when(build2.getPriority()).thenReturn(0);
+        Mockito.when(build2.getColor()).thenReturn(13567);
     }
 
     @Test
     public void testNotificationPriority() {
         assertEquals(NotificationCompat.PRIORITY_DEFAULT, build1.getPriority());
-        assertEquals(0, build2.getPriority());
+        assertEquals(0, build1.getPriority());
     }
 
     @Test
