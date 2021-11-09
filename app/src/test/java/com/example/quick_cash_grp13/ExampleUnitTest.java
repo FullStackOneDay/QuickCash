@@ -1,9 +1,6 @@
 package com.example.quick_cash_grp13;
 
-<<<<<<< HEAD
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.internal.matchers.Not;
@@ -15,16 +12,15 @@ import static org.junit.Assert.*;
 import android.content.Context;
 
 import androidx.core.app.NotificationCompat;
-=======
+
 import org.junit.*;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 
->>>>>>> 0b48c604b0c73fa681d24f92f7bf067245be40ff
+
 
 /**
  * Example local unit test, which will execute on the development machine (host).
