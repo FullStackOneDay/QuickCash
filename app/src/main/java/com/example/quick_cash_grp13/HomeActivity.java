@@ -44,8 +44,6 @@ public class HomeActivity extends AppCompatActivity  {
 
         searchView = (SearchView) findViewById(R.id.searchView);
 
-<<<<<<< HEAD
-=======
         listView = (ListView) findViewById(R.id.listView);
         jobMap = (Button) findViewById(R.id.gotoMap);
 
@@ -60,15 +58,6 @@ public class HomeActivity extends AppCompatActivity  {
         adapter = new ArrayAdapter<Job>(this, android.R.layout.simple_list_item_1, list);
         listView.setAdapter(adapter);
 
-//        list = new ArrayList<>();
-//        Job first = new Job("Developer","Google","IT","Halifax",20.0);
-//        Job second = new Job("Engineer","Microsoft","IT","Halifax",25.0);
-//        Job third = new Job("Researcher","Dalhousie","Communication","Mars",25.0);
-//        list.add(first);
-//        list.add(second);
-//        list.add(third);
-//        list.addAll(jobs);
->>>>>>> origin/main
 
 
 
