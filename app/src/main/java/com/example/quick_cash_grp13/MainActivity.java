@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
 import java.util.Hashtable;
 
 
@@ -32,14 +33,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
-        //Test Connection to Firebase
-        // Toast.makeText(MainActivity.this,"Firebase connection success", Toast.LENGTH_LONG).show();
 
         // get user name from user input
         EditText loginEmail = (EditText) findViewById(R.id.loginEmail);
         EditText loginPassword = (EditText) findViewById(R.id.loginPassword);
-
-
 
         // get login button
         Button login = (Button) findViewById(R.id.loginCheck);
@@ -54,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         // get register button
         Button register = (Button) findViewById(R.id.registerCheck);
         register.setOnClickListener(new View.OnClickListener() {
@@ -62,9 +58,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // get email and password to string
-                String EmailAddr = (loginEmail.getText().toString());
+                String emailAddr = (loginEmail.getText().toString());
                 String userPassword = (loginPassword.getText().toString());
-                registerCheck(EmailAddr,userPassword);
+                registerCheck(emailAddr,userPassword);
             }
         });
     }
@@ -99,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
             setMessage("Email field required");
         }
         //Invalid email
-        else if (isEmailValid(email) == false) {
+        else if (!isEmailValid(email)) {
             setMessage("Invalid email address");
         }
         else {
@@ -131,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             setMessage("Email field required");
         }
         //Invalid email
-        else if (isEmailValid(userEmail) == false) {
+        else if (!isEmailValid(userEmail)) {
             setMessage("Invalid email address");
         }
         else {
@@ -146,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
 
                         // This is record user's email and password to the database (kinda redundant)
                         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
-                        Hashtable<String, String> record = new Hashtable<>();
+                        HashMap<String, String> record = new HashMap<>();
                         record.put("email", userEmail);
                         record.put("password", userPassword);
                         ref.child(user.getUid()).setValue(record);

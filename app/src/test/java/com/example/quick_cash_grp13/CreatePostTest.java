@@ -9,8 +9,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.Silent.class)
-public class createPostTest {
-    public createPostActivity cpActivity = new createPostActivity();
+public class CreatePostTest {
+    public CreatePostActivity cpActivity = new CreatePostActivity();
 
     @Test
     public void checkSalaryIsValid(){
