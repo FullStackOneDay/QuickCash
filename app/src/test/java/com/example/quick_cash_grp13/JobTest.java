@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class jobTest {
+public class JobTest {
 
     String jobTitle = "Nurse";
     String company = "IWK Hospital";
@@ -24,7 +24,7 @@ public class jobTest {
     @Test
     public void testSetJobTitle() {
         job3.setJobTitle("Lawyer");
-        assertEquals(job3.getJobTitle(), "Lawyer");
+        assertEquals( "Lawyer",job3.getJobTitle());
     }
 
     @Test
@@ -35,7 +35,7 @@ public class jobTest {
     @Test
     public void testSetCompany() {
         job3.setCompany("QEII");
-        assertEquals(job3.getCompany(), "QEII");
+        assertEquals( "QEII",job3.getCompany());
     }
 
     @Test
@@ -46,7 +46,7 @@ public class jobTest {
     @Test
     public void testSetField() {
         job3.setField("Law");
-        assertEquals(job3.getField(), "Law");
+        assertEquals("Law",job3.getField());
     }
 
     @Test
@@ -57,7 +57,7 @@ public class jobTest {
     @Test
     public void testSetLocation() {
         job3.setLocation("Toronto");
-        assertEquals(job3.getLocation(), "Toronto");
+        assertEquals("Toronto",job3.getLocation());
     }
 
     @Test
@@ -68,17 +68,17 @@ public class jobTest {
     @Test
     public void testSetSalaryHr() {
         job1.setSalary(32.0);
-        assertEquals(job1.getSalary(), 32.0, 0);
+        assertEquals( 32.0, job1.getSalary(), 0);
     }
 
     @Test
     public void testGetSalaryMonth(){
-        assertEquals(job2.getSalary_month(), salaryMonth);
+        assertEquals(job2.getSalaryMonth(), salaryMonth);
     }
 
     @Test
     public void testSetSalaryMonth() {
-        job2.setSalary_month(5500);
-        assertEquals(job2.getSalary_month(), 5500);
+        job2.setSalaryMonth(5500);
+        assertEquals(5500, job2.getSalaryMonth(), 0);
     }
 }

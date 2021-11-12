@@ -1,12 +1,13 @@
 package com.example.quick_cash_grp13;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SearchJob {
 
-    private ArrayList<Job> jobs;
+    private List<Job> jobs;
 
-    public SearchJob(ArrayList<Job> jobs) {
+    public SearchJob(List<Job> jobs) {
         this.jobs = jobs;
     }
 
@@ -17,11 +18,11 @@ public class SearchJob {
                 "}\n";
     }
 
-    public ArrayList<Job> getJobs() {
+    public List<Job> getJobs() {
         return jobs;
     }
 
-    public void setJobs(ArrayList<Job> jobs) {
+    public void setJobs(List<Job> jobs) {
         this.jobs = jobs;
     }
 
@@ -31,13 +32,12 @@ public class SearchJob {
     }
 
     // add an arraylist of jobs
-    public void addJobs(ArrayList<Job> jobsAdd){
+    public void addJobs(List<Job> jobsAdd){
         jobs.addAll(jobsAdd);
     }
 
     //Method that returns an ArrayList of jobs that have titles that contain the users' search.
-    public ArrayList<Job> searchByTitle(String title){
-        // TODO
+    public List<Job> searchByTitle(String title){
         ArrayList<Job> jobSearched = new ArrayList<>();
         for (Job job : jobs){
             if(job.getJobTitle().toLowerCase().contains(title.toLowerCase())){
@@ -48,8 +48,7 @@ public class SearchJob {
     }
 
     //Method that returns an ArrayList of jobs that have job fields that contain the users' search.
-    public  ArrayList<Job> searchByField(String field){
-        // TODO
+    public  List<Job> searchByField(String field){
         ArrayList<Job> fieldSearched = new ArrayList<>();
         for(Job job : jobs){
             if(job.getField().toLowerCase().contains(field.toLowerCase())){
@@ -60,8 +59,7 @@ public class SearchJob {
     }
 
     //Method that returns an ArrayList of jobs that have companies that contain the users' search.
-    public  ArrayList<Job> searchByCompany(String company){
-        // TODO
+    public  List<Job> searchByCompany(String company){
         ArrayList<Job> companySearched = new ArrayList<>();
         for(Job job : jobs){
             if(job.getCompany().toLowerCase().contains(company.toLowerCase())){
@@ -72,8 +70,7 @@ public class SearchJob {
     }
 
     //Method that returns an ArrayList of jobs that have locations that contain the users' search.
-    public  ArrayList<Job> searchByLocation(String location){
-        // TODO
+    public  List<Job> searchByLocation(String location){
         ArrayList<Job> locationSearched = new ArrayList<>();
         for(Job job : jobs){
             if(job.getLocation().toLowerCase().contains(location.toLowerCase())){
@@ -85,8 +82,7 @@ public class SearchJob {
     }
 
     //Method that returns an ArrayList of jobs that have salaries that are exactly like the users' search.
-    public  ArrayList<Job> searchBySalary(double salary){
-        // TODO
+    public  List<Job> searchBySalary(double salary){
         ArrayList<Job> salarySearched = new ArrayList<>();
         for(Job job : jobs){
             if(job.getSalary() == (salary)){

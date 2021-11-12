@@ -8,6 +8,11 @@ import android.content.ContextWrapper;
 import android.os.Build;
 
 public class CreateNotificationChannel extends ContextWrapper {
+
+    private static CharSequence name;
+    private static String id;
+    private static int importance;
+
     public CreateNotificationChannel(Context base) {
         super(base);
 
@@ -19,9 +24,9 @@ public class CreateNotificationChannel extends ContextWrapper {
     // Create a notification channel for when an employer receives response from potential employee
     @TargetApi(Build.VERSION_CODES.O)
     private void createJobPostingResponseChannel() {
-        CharSequence name = getString(R.string.job_posting_response);
-        String id = getString(R.string.job_posting_response_id);
-        int importance = NotificationManager.IMPORTANCE_HIGH; // Assume that these are important notifications for employers
+        name = getString(R.string.job_posting_response);
+        id = getString(R.string.job_posting_response_id);
+        importance = NotificationManager.IMPORTANCE_HIGH; // Assume that these are important notifications for employers
 
         // Create a NotificationChannel
         NotificationChannel jobResponseChannel = new NotificationChannel(id, name, importance);
@@ -29,5 +34,17 @@ public class CreateNotificationChannel extends ContextWrapper {
         // Create a NotificationManager and register the channel with the system
         NotificationManager notificationManager = getSystemService(NotificationManager.class);
         notificationManager.createNotificationChannel(jobResponseChannel);
+    }
+
+    public static CharSequence getNotificationName() {
+        return name;
+    }
+
+    public static String getNotificationId() {
+        return id;
+    }
+
+    public static int getNotificationImportance() {
+        return importance;
     }
 }

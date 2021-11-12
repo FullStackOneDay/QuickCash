@@ -16,11 +16,11 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
 
-public class createPostActivity extends Activity {
+public class CreatePostActivity extends Activity {
     private FirebaseDatabase database;
     private DatabaseReference jobRef;
-    private FirebaseAuth mAuth;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_posting);
@@ -31,7 +31,7 @@ public class createPostActivity extends Activity {
         EditText salary = (EditText) findViewById(R.id.salary);
         Button submit = (Button) findViewById(R.id.postJobButton);
         RadioButton monthly = findViewById(R.id.monthly);
-        //create field dropdown menue
+        //create field dropdown menu
         Spinner field = (Spinner) findViewById(R.id.fieldSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.fieldArray, R.layout.support_simple_spinner_dropdown_item);
         field.setAdapter(adapter);
@@ -49,12 +49,19 @@ public class createPostActivity extends Activity {
                 double salaryAmount = Double.parseDouble(salary.getText().toString());
                 boolean monthlySalary = monthly.isChecked();
 
+                Job job;
+                //create a job from field data and push it to a list on the database
+                if(monthlySalary) { //salary is monthly,
+                    job = new Job(jobTitleText, companyText, fieldText, locationText, (int)salaryAmount);
+                    Job.allJobs.add(job);
+                } else {    //salary is hourly
+                    job = new Job(jobTitleText, companyText, fieldText, locationText, salaryAmount);
+
                 if (jobTitleText.isEmpty() || companyText.isEmpty() || locationText.isEmpty()
                         || fieldText.isEmpty() || !(isSalaryValid(salaryAmount))) {
                     outMsg.setText("Missing Required Fields.");
                 }
                 else {
-                    Job job;
                     //create a job from field data and push it to a list on the database
                     if(monthlySalary) { //salary is monthly,
                         job = new Job(jobTitleText, companyText, locationText, fieldText, (int)salaryAmount);
@@ -65,7 +72,7 @@ public class createPostActivity extends Activity {
                     outMsg.setText("Job posted successfully!");
                 }
             }
-        });
+        }});
 
         initializeDatabase();
     }
@@ -79,6 +86,5 @@ public class createPostActivity extends Activity {
     private void initializeDatabase() {
         database = FirebaseDatabase.getInstance();
         jobRef = database.getReference("jobs");
-        mAuth = FirebaseAuth.getInstance();
     }
 }

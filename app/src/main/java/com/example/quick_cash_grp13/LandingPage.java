@@ -8,6 +8,7 @@ import android.widget.Button;
 
 public class LandingPage extends Activity {
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
@@ -26,7 +27,7 @@ public class LandingPage extends Activity {
         employer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent employerIntent = new Intent(getApplicationContext(), createPostActivity.class);
+                Intent employerIntent = new Intent(getApplicationContext(), CreatePostActivity.class);
                 startActivity(employerIntent);
             }
         });
