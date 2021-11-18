@@ -59,7 +59,7 @@ public class CreatePostActivity extends Activity {
 
                 if (jobTitleText.isEmpty() || companyText.isEmpty() || locationText.isEmpty()
                         || fieldText.isEmpty() || !(isSalaryValid(salaryAmount))) {
-                    outMsg.setText("Missing Required Fields.");
+                    outMsg.setText(R.string.JobMissingFields);
                 }
                 else {
                     //create a job from field data and push it to a list on the database
@@ -69,7 +69,7 @@ public class CreatePostActivity extends Activity {
                         job = new Job(jobTitleText, companyText, locationText, fieldText, salaryAmount);
                     }
                     jobRef.push().setValue(job);
-                    outMsg.setText("Job posted successfully!");
+                    outMsg.setText(R.string.jobSuccess);
                 }
             }
         }});
