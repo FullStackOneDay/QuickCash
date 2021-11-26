@@ -45,6 +45,7 @@ dependencies {
     // Declare the dependency for the Firebase Authentication library
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.android.gms:play-services-maps:17.0.1'
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
     testImplementation 'junit:junit:4.+'
     testImplementation 'android.arch.core:core-testing:1.1.1'
     //Mockito
