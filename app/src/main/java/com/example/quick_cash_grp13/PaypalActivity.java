@@ -42,7 +42,7 @@ public class PaypalActivity extends MainActivity{
   @Override
   protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
-      setContentView(R.layout.activity_main);
+      setContentView(R.layout.activity_paypal);
       config = new PayPalConfiguration().environment(PayPalConfiguration.ENVIRONMENT_SANDBOX).clientId(PaypalConfig.PAYPAL_CLIENT_ID);
 
       edtAmount = findViewById(R.id.edtAmount);
@@ -62,6 +62,8 @@ public class PaypalActivity extends MainActivity{
     private void initializeActivityLauncher() {
         // Initialize result launcher
         activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+            private static final String TAG = "error message1";
+
             @Override
             public void onActivityResult(ActivityResult result) {
                 if (result.getResultCode() == RESULT_OK) {
