@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -26,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 public class HomeActivity extends AppCompatActivity  {
     ArrayList<Job> jobs = new ArrayList<>();
 
+    public static String jobEntyty;
     static String jobCom;
     SearchView searchView;
     ListView listView;
@@ -47,7 +50,6 @@ public class HomeActivity extends AppCompatActivity  {
 
         searchView = (SearchView) findViewById(R.id.searchView);
 
-        listView = (ListView) findViewById(R.id.listView);
         jobMap = (Button) findViewById(R.id.gotoMap);
 
         list = new ArrayList<>();
@@ -102,6 +104,8 @@ public class HomeActivity extends AppCompatActivity  {
         });
 
 
+
+
     }
 
     // initialize database
@@ -120,8 +124,17 @@ public class HomeActivity extends AppCompatActivity  {
                 }
                 listView = (ListView) findViewById(R.id.listView);
                 listView.setAdapter(adapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(getApplicationContext(), JobEntityActivity.class);
+                        String pos = Integer.toString(position);
+                        intent.putExtra(jobEntyty, pos);
 
+                        startActivity(intent);
 
+                    }
+                });
             }
 
             @Override
@@ -129,6 +142,7 @@ public class HomeActivity extends AppCompatActivity  {
 
             }
         });
+
     }
 
 
