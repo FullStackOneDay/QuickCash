@@ -108,7 +108,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 LatLng location = latLngFromString(locationString);
 
                 //add a marker to the map, and add the returned marker to a list of markers
-                markers.add(mMap.addMarker(new MarkerOptions().position(location).title(job.getJobTitle()).snippet("Salary" + job.getSalary())));
+                if(location != null) {
+                    markers.add(mMap.addMarker(new MarkerOptions().position(location).title(job.getJobTitle()).snippet("Salary" + job.getSalary())));
+                }
             }
 
             @Override
@@ -195,13 +197,15 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         if(locationString != null || !locationString.equals("")) {
             try {
                 addressList = geo.getFromLocationName(locationString, 1);
+                if (addressList.size() > 0){
+                    Address address = addressList.get(0);
+                    return new LatLng(address.getLatitude(), address.getLongitude());
+                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-            Address address = addressList.get(0);
-            LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-            return latLng;
+
         }
       return null;
     }
