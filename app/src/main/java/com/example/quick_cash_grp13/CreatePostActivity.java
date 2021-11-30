@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -50,29 +51,23 @@ public class CreatePostActivity extends Activity {
                 boolean monthlySalary = monthly.isChecked();
 
                 Job job;
-                //create a job from field data and push it to a list on the database
-                if(monthlySalary) { //salary is monthly,
-                    job = new Job(jobTitleText, companyText, fieldText, locationText, (int)salaryAmount);
-                    Job.allJobs.add(job);
-                } else {    //salary is hourly
-                    job = new Job(jobTitleText, companyText, fieldText, locationText, salaryAmount);
-
                 if (jobTitleText.isEmpty() || companyText.isEmpty() || locationText.isEmpty()
                         || fieldText.isEmpty() || !(isSalaryValid(salaryAmount))) {
-                    outMsg.setText(R.string.JobMissingFields);
+                    outMsg.setText(R.string.job_missing_fields );
+
                 }
                 else {
                     //create a job from field data and push it to a list on the database
                     if(monthlySalary) { //salary is monthly,
-                        job = new Job(jobTitleText, companyText, locationText, fieldText, (int)salaryAmount);
+                        job = new Job(jobTitleText, companyText, fieldText, locationText, (int)salaryAmount);
                     } else {    //salary is hourly
-                        job = new Job(jobTitleText, companyText, locationText, fieldText, salaryAmount);
+                        job = new Job(jobTitleText, companyText, fieldText, locationText, salaryAmount);
                     }
                     jobRef.push().setValue(job);
-                    outMsg.setText(R.string.jobSuccess);
+                    outMsg.setText(R.string.job_post_success);
                 }
             }
-        }});
+        });
 
         initializeDatabase();
     }
