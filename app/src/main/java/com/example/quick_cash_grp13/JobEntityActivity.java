@@ -81,7 +81,7 @@ public class JobEntityActivity extends AppCompatActivity {
                 double salary1 = currJob.getSalary();
                 String salary = "Salary: " + salary1;
                 if (salary1 == 0){
-                    salary = "No information";
+                    salary = "Salary: No Information";
                     TextViewnSalart.append(salary);
 
                 }
