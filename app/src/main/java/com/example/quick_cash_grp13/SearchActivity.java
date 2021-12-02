@@ -29,6 +29,13 @@ public class SearchActivity extends AppCompatActivity {
     ArrayList<Job> jobs = new ArrayList<>();
     ArrayList<Job> searchResult = new ArrayList<>();
     SearchJob searchJob;
+    ArrayList<String>job1;
+    ArrayList<String>job2;
+    ArrayList<String>job3;
+    ArrayList<String>job4;
+    ArrayList<String>job5;
+    public static String jobEntyty;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +55,20 @@ public class SearchActivity extends AppCompatActivity {
         RadioButton radioButtonLoc=  (RadioButton) findViewById(R.id.radioButtonLocation);
         RadioButton radioButtonSalart=  (RadioButton) findViewById(R.id.radioButtonSalary);
         ScrollView scrollView = (ScrollView) findViewById(R.id.scrollView);
-        TextView searchText1 = (TextView) findViewById(R.id.textSearch);
+        TextView searchText1 = (TextView) findViewById(R.id.searchResul1);
+        TextView searchText2 = (TextView) findViewById(R.id.searchResul2);
+        TextView searchText3 = (TextView) findViewById(R.id.searchResul3);
+        TextView searchText4 = (TextView) findViewById(R.id.searchResul4);
+        TextView searchText5 = (TextView) findViewById(R.id.searchResul5);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 searchResult.clear();
                 searchText1.setText("");
+                searchText2.setText("");
+                searchText3.setText("");
+                searchText4.setText("");
+                searchText5.setText("");
 
                 String searchedText = (searchText.getText().toString());
                 if (radioButtonTitle.isChecked()){
@@ -88,11 +103,83 @@ public class SearchActivity extends AppCompatActivity {
 
                 }
                 else {
-                    for (Job sr : searchResult) {
-                        searchText1.append(sr.toString());
-                        searchText1.append("\n");
+                    int searchResultCount = searchResult.size();
+                    searchText1.append(searchResult.get(0).toString());
+                    searchText1.getText();
+                    searchText1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            job1 = addToJob(searchResult,0);
+                            Intent intent = new Intent(getApplicationContext(), JobEntityActivity.class);
+                            intent.putStringArrayListExtra(jobEntyty, job1);
+
+                            startActivity(intent);
+                        }
+                    });
+
+                    if (searchResultCount>=2 ) {
+                        searchText2.append(searchResult.get(1).toString());
+                        searchText2.getText();
+
+                        searchText2.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                job2 = addToJob(searchResult,1);
+                                Intent intent = new Intent(getApplicationContext(), JobEntityActivity.class);
+                                intent.putStringArrayListExtra(jobEntyty, job2);
+
+                                startActivity(intent);
+                            }
+                        });
                     }
-                    searchText.getText();
+                    if (searchResultCount>=3 ) {
+                        searchText3.append(searchResult.get(2).toString());
+                        searchText3.getText();
+
+                        searchText3.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                job3 = addToJob(searchResult,2);
+                                Intent intent = new Intent(getApplicationContext(), JobEntityActivity.class);
+                                intent.putStringArrayListExtra(jobEntyty, job3);
+
+                                startActivity(intent);
+                            }
+                        });
+
+                    }
+                    if (searchResultCount>=4 ) {
+                        searchText4.append(searchResult.get(3).toString());
+                        searchText4.getText();
+
+
+                        searchText4.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                job4 = addToJob(searchResult,3);
+                                Intent intent = new Intent(getApplicationContext(), JobEntityActivity.class);
+                                intent.putStringArrayListExtra(jobEntyty, job4);
+
+                                startActivity(intent);
+                            }
+                        });
+                    }
+                    if (searchResultCount>4 ) {
+                        searchText5.append(searchResult.get(4).toString());
+                        searchText5.getText();
+
+
+                        searchText5.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                job5 = addToJob(searchResult,4);
+                                Intent intent = new Intent(getApplicationContext(), JobEntityActivity.class);
+                                intent.putStringArrayListExtra(jobEntyty, job5);
+
+                                startActivity(intent);
+                            }
+                        });
+                    }
 
                 }
 
@@ -104,6 +191,10 @@ public class SearchActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             searchText1.setText("");
+            searchText2.setText("");
+            searchText3.setText("");
+            searchText4.setText("");
+            searchText5.setText("");
             searchText.setText("");
         }
     });
@@ -137,6 +228,15 @@ public class SearchActivity extends AppCompatActivity {
 
             }
         });
+    }
+    public ArrayList<String> addToJob(ArrayList<Job> jobs, int position){
+        ArrayList<String> jobEntity = new ArrayList<>();
+        jobEntity.add(jobs.get(position).getJobTitle());
+        jobEntity.add(jobs.get(position).getField());
+        jobEntity.add(jobs.get(position).getCompany());
+        jobEntity.add(jobs.get(position).getLocation());
+        jobEntity.add(Integer.toString(jobs.get(position).getSalaryMonth()));
+        return jobEntity;
     }
 
 

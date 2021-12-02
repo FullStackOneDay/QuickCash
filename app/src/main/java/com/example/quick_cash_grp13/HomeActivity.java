@@ -128,8 +128,8 @@ public class HomeActivity extends AppCompatActivity  {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent intent = new Intent(getApplicationContext(), JobEntityActivity.class);
-                        String pos = Integer.toString(position);
-                        intent.putExtra(jobEntyty, pos);
+                        ArrayList<String> job1 = addToJob(jobs,position);
+                        intent.putExtra(jobEntyty, job1);
 
                         startActivity(intent);
 
@@ -144,6 +144,16 @@ public class HomeActivity extends AppCompatActivity  {
         });
 
     }
+    public ArrayList<String> addToJob(ArrayList<Job> jobs, int position){
+        ArrayList<String> jobEntity = new ArrayList<>();
+        jobEntity.add(jobs.get(position).getJobTitle());
+        jobEntity.add(jobs.get(position).getField());
+        jobEntity.add(jobs.get(position).getCompany());
+        jobEntity.add(jobs.get(position).getLocation());
+        jobEntity.add(Integer.toString(jobs.get(position).getSalaryMonth()));
+        return jobEntity;
+    }
+
 
 
 }

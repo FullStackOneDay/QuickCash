@@ -30,13 +30,7 @@ public class JobEntityActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_job_entity);
 
-
-
-
         initializeDatabase();
-
-
-
     }
 
     private void initializeDatabase(){
@@ -59,26 +53,29 @@ public class JobEntityActivity extends AppCompatActivity {
 
 
 
+//                Intent mainIntent = getIntent();
+//                String wel =mainIntent.getStringExtra(HomeActivity.jobEntyty);
+//                int postion = Integer.parseInt(wel);
+////                Toast.makeText(JobEntityActivity.this,wel, Toast.LENGTH_LONG).show();
+//                Job currJob = jobs.get(postion);
+////                Toast.makeText(JobEntityActivity.this, currJob.toString(), Toast.LENGTH_LONG).show();
                 Intent mainIntent = getIntent();
-                String wel =mainIntent.getStringExtra(HomeActivity.jobEntyty);
-                int postion = Integer.parseInt(wel);
-//                Toast.makeText(JobEntityActivity.this,wel, Toast.LENGTH_LONG).show();
-                Job currJob = jobs.get(postion);
-                Toast.makeText(JobEntityActivity.this, currJob.toString(), Toast.LENGTH_LONG).show();
-
-                String title = "Title: "+currJob.getJobTitle();
+                ArrayList<String> job1 = mainIntent.getStringArrayListExtra(SearchActivity.jobEntyty);
+                if (job1.isEmpty()) {
+                    job1 = mainIntent.getStringArrayListExtra(HomeActivity.jobEntyty);
+                }                String title = "Title: "+job1.get(0);
                 TextViewTitle.append(title);
 
-                String fielfd = "Field: "+currJob.getField();
+                String fielfd = "Field: "+job1.get(1);
                 TextViewField.append(fielfd);
 
-                String company = "Company: "+currJob.getCompany();
+                String company = "Company: "+job1.get(2);
                 TextViewCom.append(company);
 
-                String location = "Location: "+currJob.getLocation();
+                String location = "Location: "+job1.get(3);
                 TextViewLoc.append(location);
 
-                double salary1 = currJob.getSalary();
+                double salary1 = Integer.parseInt(job1.get(4));
                 String salary = "Salary: " + salary1;
                 if (salary1 == 0){
                     salary = "Salary: No Information";
