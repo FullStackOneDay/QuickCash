@@ -30,7 +30,7 @@ public class HomeActivity extends AppCompatActivity  {
 
     public static String jobEntyty;
     static String jobCom;
-    SearchView searchView;
+//    SearchView searchView;
     ListView listView;
     ArrayList<Job> list;
     List<Job> TitleSearchlist;
@@ -48,7 +48,7 @@ public class HomeActivity extends AppCompatActivity  {
         Button adSearch = (Button) findViewById(R.id.adSearch);
         initializeDatabase();
 
-        searchView = (SearchView) findViewById(R.id.searchView);
+//        searchView = (SearchView) findViewById(R.id.searchView);
 
         jobMap = (Button) findViewById(R.id.gotoMap);
 
@@ -60,31 +60,31 @@ public class HomeActivity extends AppCompatActivity  {
         list.add(second);
         list.add(third);
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-
-                if(jobs.contains(query)){
-                    adapter.getFilter().filter(query);
-                }
-                if (checkBoxTitle.isChecked()){
-                    TitleSearchlist = searchJob.searchByLocation(query);
-                    Toast.makeText(HomeActivity.this, "good",Toast.LENGTH_LONG).show();
-                }
-
-
-                else{
-                    Toast.makeText(HomeActivity.this, "No Match found",Toast.LENGTH_LONG).show();
-                }
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                adapter.getFilter().filter(newText);
-                return false;
-            }
-        });
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//
+//                if(jobs.contains(query)){
+//                    adapter.getFilter().filter(query);
+//                }
+//                if (checkBoxTitle.isChecked()){
+//                    TitleSearchlist = searchJob.searchByLocation(query);
+//                    Toast.makeText(HomeActivity.this, "good",Toast.LENGTH_LONG).show();
+//                }
+//
+//
+//                else{
+//                    Toast.makeText(HomeActivity.this, "No Match found",Toast.LENGTH_LONG).show();
+//                }
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                adapter.getFilter().filter(newText);
+//                return false;
+//            }
+//        });
 
         jobMap.setOnClickListener(new Button.OnClickListener() {
             @Override
