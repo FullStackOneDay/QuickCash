@@ -32,7 +32,6 @@ public class HomeActivity extends AppCompatActivity  {
     static String jobCom;
 //    SearchView searchView;
     ListView listView;
-    ArrayList<Job> list;
     List<Job> TitleSearchlist;
     ArrayAdapter<Job> adapter;
     Button jobMap;
@@ -52,13 +51,6 @@ public class HomeActivity extends AppCompatActivity  {
 
         jobMap = (Button) findViewById(R.id.gotoMap);
 
-        list = new ArrayList<>();
-        Job first = new Job("Developer","Google","IT","Halifax",20.0);
-        Job second = new Job("Engineer","Microsoft","IT","Halifax,",25.0);
-        Job third = new Job("Researcher","Dalhousie","Communication","Mars",25.0);
-        list.add(first);
-        list.add(second);
-        list.add(third);
 
 //        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 //            @Override
