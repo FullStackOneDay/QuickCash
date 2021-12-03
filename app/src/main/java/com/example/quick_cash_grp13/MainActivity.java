@@ -20,7 +20,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
-import java.util.Hashtable;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -45,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // get user name and password to string
-                String EmailAddr = (loginEmail.getText().toString());
+                String email = (loginEmail.getText().toString());
                 String userPassword = (loginPassword.getText().toString());
-                loginCheck(EmailAddr,userPassword);
+                loginCheck(email,userPassword);
             }
         });
 

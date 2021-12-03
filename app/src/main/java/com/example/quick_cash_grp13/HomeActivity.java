@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -33,6 +34,7 @@ public class HomeActivity extends AppCompatActivity  {
     Button jobMap;
     SearchJob searchJob;
     CheckBox checkBoxTitle;
+    private String TAG = "HomeTag";
 
 
     @Override
@@ -96,19 +98,19 @@ public class HomeActivity extends AppCompatActivity  {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Log.e(TAG, "The read failed: " + error.getCode());
             }
         });
 
     }
     public ArrayList<String> addToJob(List<Job> jobs, int position){
-        ArrayList<String> jobEntity = new ArrayList<>();
-        jobEntity.add(jobs.get(position).getJobTitle());
-        jobEntity.add(jobs.get(position).getField());
-        jobEntity.add(jobs.get(position).getCompany());
-        jobEntity.add(jobs.get(position).getLocation());
-        jobEntity.add(Integer.toString(jobs.get(position).getSalaryMonth()));
-        return jobEntity;
+        ArrayList<String> jobEntityList = new ArrayList<>();
+        jobEntityList.add(jobs.get(position).getJobTitle());
+        jobEntityList.add(jobs.get(position).getField());
+        jobEntityList.add(jobs.get(position).getCompany());
+        jobEntityList.add(jobs.get(position).getLocation());
+        jobEntityList.add(Integer.toString(jobs.get(position).getSalaryMonth()));
+        return jobEntityList;
     }
 
 

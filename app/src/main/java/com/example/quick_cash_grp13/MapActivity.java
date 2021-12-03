@@ -115,25 +115,23 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
+                //The map will only update with removed or changed jobs when the activity restarts
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
+                //The map will only update with removed or changed jobs when the activity restarts
             }
 
             @Override
             public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
+                //The map will only update with removed or changed jobs when the activity restarts
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.e(TAG, "The read failed: " + error.getCode());
             }
-
-
         });
 
         if (mLocationPermission) {
@@ -166,7 +164,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         } catch (SecurityException e) {
             Log.d(TAG, "SecurityException: = " + e.getMessage());
         }
-
     }
 
     private void initMap() {
@@ -178,12 +175,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
     }
 
-
-
     private void initializeDatabase() {
         database = FirebaseDatabase.getInstance();
          jobRef = database.getReference("jobs");
-
     }
 
     //Searches the input string to find a google maps address.
@@ -201,8 +195,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
         }
       return null;
     }
@@ -219,9 +211,5 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                     new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
                     LOCATION_PERMISSION_REQUEST_CODE);
         }
-
     }
-
-
-
 }
