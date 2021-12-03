@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,8 +12,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 
 import android.widget.ListView;
-import android.widget.SearchView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,11 +25,10 @@ import com.google.firebase.database.ValueEventListener;
 public class HomeActivity extends AppCompatActivity  {
     ArrayList<Job> jobs = new ArrayList<>();
 
-    public static String jobEntyty;
+    public static String jobEntity;
     static String jobCom;
-//    SearchView searchView;
     ListView listView;
-    List<Job> TitleSearchlist;
+    List<Job> titleSearchlist;
     ArrayAdapter<Job> adapter;
     Button jobMap;
     SearchJob searchJob;
@@ -46,38 +42,7 @@ public class HomeActivity extends AppCompatActivity  {
 
         Button adSearch = (Button) findViewById(R.id.adSearch);
         initializeDatabase();
-
-//        searchView = (SearchView) findViewById(R.id.searchView);
-
         jobMap = (Button) findViewById(R.id.gotoMap);
-
-
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//
-//                if(jobs.contains(query)){
-//                    adapter.getFilter().filter(query);
-//                }
-//                if (checkBoxTitle.isChecked()){
-//                    TitleSearchlist = searchJob.searchByLocation(query);
-//                    Toast.makeText(HomeActivity.this, "good",Toast.LENGTH_LONG).show();
-//                }
-//
-//
-//                else{
-//                    Toast.makeText(HomeActivity.this, "No Match found",Toast.LENGTH_LONG).show();
-//                }
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                adapter.getFilter().filter(newText);
-//                return false;
-//            }
-//        });
-
         jobMap.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,7 +86,7 @@ public class HomeActivity extends AppCompatActivity  {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent intent = new Intent(getApplicationContext(), JobEntityActivity.class);
                         ArrayList<String> job1 = addToJob(jobs,position);
-                        intent.putExtra(jobEntyty, job1);
+                        intent.putExtra(jobEntity, job1);
 
                         startActivity(intent);
 
@@ -136,7 +101,7 @@ public class HomeActivity extends AppCompatActivity  {
         });
 
     }
-    public ArrayList<String> addToJob(ArrayList<Job> jobs, int position){
+    public ArrayList<String> addToJob(List<Job> jobs, int position){
         ArrayList<String> jobEntity = new ArrayList<>();
         jobEntity.add(jobs.get(position).getJobTitle());
         jobEntity.add(jobs.get(position).getField());

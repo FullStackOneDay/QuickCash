@@ -105,9 +105,6 @@ public class MainActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         setMessage("Login succeed");
                         Toast.makeText(MainActivity.this, "Login succeed", Toast.LENGTH_SHORT).show();
-                        // Sign in success, update UI with the signed-in user's information
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        //update UI and move to next activity
                         //Start next activity
                         switch2LandingPage();
 
@@ -158,5 +155,4 @@ public class MainActivity extends AppCompatActivity {
             });
         }
     }
-
 }

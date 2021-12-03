@@ -143,17 +143,14 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             getCurrentLocation();
             mMap.setMyLocationEnabled(true);
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
-
-
         }
-
     }
 
     public void getCurrentLocation() {
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         try {
             if (mLocationPermission) {
-                Task location = mFusedLocationProviderClient.getLastLocation();
+                Task<Location> location = mFusedLocationProviderClient.getLastLocation();
                 location.addOnCompleteListener(new OnCompleteListener() {
                     @Override
                     public void onComplete(@NonNull Task task) {
@@ -194,10 +191,10 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         List<Address> addressList = null;
         Geocoder geo = new Geocoder(MapActivity.this);
 
-        if(locationString != null || !locationString.equals("")) {
+        if(locationString != null && !locationString.equals("")) {
             try {
                 addressList = geo.getFromLocationName(locationString, 1);
-                if (addressList.size() > 0){
+                if (!addressList.isEmpty()){
                     Address address = addressList.get(0);
                     return new LatLng(address.getLatitude(), address.getLongitude());
                  }

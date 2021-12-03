@@ -3,10 +3,11 @@ package com.example.quick_cash_grp13;
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Job {
 
-    public static ArrayList<Job> allJobs = new ArrayList<Job>();
+    public static List<Job> allJobs = new ArrayList<>();
 
     private String jobTitle;
     private String company;
