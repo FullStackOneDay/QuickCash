@@ -1,6 +1,9 @@
 package com.example.quick_cash_grp13;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +13,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -138,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
                         // Sign up success, update UI with the signed-up user's information
                         // This is adding users into the authentication section of Firebase
                         setMessage("Registration succeed");
+                        notifications();
                         FirebaseUser user = mAuth.getCurrentUser();
 
                         // This is record user's email and password to the database (kinda redundant)
@@ -157,6 +163,24 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    private void notifications() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("id", "Welcome", NotificationManager.IMPORTANCE_DEFAULT);
+
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "id")
+                .setContentTitle("Welcome to Quick Cash!")
+                .setSmallIcon(R.drawable.ic_baseline_attach_money_24)
+                .setAutoCancel(true)
+                .setContentText("Congratulations, your registration was successful. Login to Start looking for Jobs.");
+
+        NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this);
+        managerCompat.notify(999, builder.build());
     }
 
 }
