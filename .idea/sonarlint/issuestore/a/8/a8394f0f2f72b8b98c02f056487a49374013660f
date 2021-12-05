@@ -1,0 +1,16 @@
+
+S
+java:S1854m"8Remove this useless assignment to local variable "user".(©Í”äýÿÿÿÿ
+D
+java:S1481m")Remove this unused "user" local variable.(©Í”äýÿÿÿÿ
+Q
+java:S6213‘":Rename this variable to not match a restricted identifier.(³³›è
+f	java:S1170"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ã¹ÁÔ
+C
+java:S1604+"(Make this anonymous inner class a lambda(ç¯€ùÿÿÿÿ
+>
+java:S16048"(Make this anonymous inner class a lambda(á‡¤Å
+>
+java:S1604f"(Make this anonymous inner class a lambda(±¢µâ
+D
+java:S1604†"(Make this anonymous inner class a lambda(Ñ°Ü§ûÿÿÿÿ
