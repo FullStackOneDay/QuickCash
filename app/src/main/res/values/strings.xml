@@ -44,5 +44,7 @@
 
     <string name="enter_amount_to_be_paid">Enter Amount to be Paid</string>
     <string name="make_payment">Make Payment</string>
+    <string name="type_the_keyword_here">Type the keyword here...</string>
+    <string name="advance_job_search">Advance Job Search</string>
 
 </resources>
