@@ -31,7 +31,5 @@ public class LandingPage extends Activity {
                 startActivity(employerIntent);
             }
         });
-
     }
-
 }
