@@ -4,82 +4,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/purple_700"
     tools:context=".JobEntityActivity">
 
     <TextView
         android:id="@+id/JobView"
-        android:layout_width="177dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="60dp"
-        android:fontFamily="sans-serif"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:gravity="center"
-        android:text="Job View"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="34sp"
+        android:text="Job Information"
+        android:textColor="#FFF"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.464" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="355dp"
-        android:layout_height="425dp"
-        android:layout_marginTop="50dp"
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="620dp"
+        android:background="#FFF"
+        android:padding="10dp"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/JobView">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/jobTitile"
+            android:layout_margin="10dp"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:textSize="25sp"
-            android:background="@drawable/textview_border"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="#000"
             />
 
         <TextView
             android:id="@+id/jobField"
+            android:layout_margin="10dp"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:textSize="25sp"
-            android:background="@drawable/textview_border"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="#000"
             />
 
         <TextView
             android:id="@+id/jobCompany"
+            android:layout_margin="10dp"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:textSize="25sp"
-            android:background="@drawable/textview_border"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="#000"
             />
 
         <TextView
             android:id="@+id/jobSalary"
+            android:layout_margin="10dp"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:textSize="25sp"
-            android:background="@drawable/textview_border"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="#000"
             />
 
         <TextView
             android:id="@+id/jonLocation"
+            android:layout_margin="10dp"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:textSize="25sp"
-            android:background="@drawable/textview_border"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="#000"
             />
+
+        <Button
+            android:id="@+id/applyButton"
+            android:layout_gravity="center"
+            android:layout_width="130dp"
+            android:background="@drawable/button_background"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Apply"
+             />
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/applyButton"
-        android:layout_width="131dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="24dp"
-        android:text="Apply"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
