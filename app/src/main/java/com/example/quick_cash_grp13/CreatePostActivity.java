@@ -71,7 +71,7 @@ public class CreatePostActivity extends Activity {
                     }
                     jobRef.push().setValue(job);
                     outMsg.setText(R.string.job_post_success);
-                    notifications(jobTitleText, locationText);
+                    notifications();
                 }
             }
         });
@@ -90,9 +90,9 @@ public class CreatePostActivity extends Activity {
         jobRef = database.getReference("jobs");
     }
 
-    private void notifications(String jobTitle, String jobLocation) {
+    private void notifications() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel("id", jobTitle, NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel channel = new NotificationChannel("id", "jobPost", NotificationManager.IMPORTANCE_DEFAULT);
 
             NotificationManager manager = getSystemService(NotificationManager.class);
             manager.createNotificationChannel(channel);
