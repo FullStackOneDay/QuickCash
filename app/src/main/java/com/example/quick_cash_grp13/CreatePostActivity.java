@@ -32,8 +32,7 @@ public class CreatePostActivity extends Activity {
         EditText salary = (EditText) findViewById(R.id.salary);
         Button submit = (Button) findViewById(R.id.postJobButton);
         RadioButton monthly = findViewById(R.id.monthly);
-        //create field dropdown menu
-        Spinner field = (Spinner) findViewById(R.id.fieldSpinner);
+        Spinner field = (Spinner) findViewById(R.id.fieldSpinner);       //create field dropdown menu
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.fieldArray, R.layout.support_simple_spinner_dropdown_item);
         field.setAdapter(adapter);
         TextView outMsg = (TextView) findViewById(R.id.outputMsg);
@@ -68,15 +67,12 @@ public class CreatePostActivity extends Activity {
                 }
             }
         });
-
         initializeDatabase();
     }
-
 
     public boolean isSalaryValid(double salary) {
         return salary > 0;
     }
-
 
     private void initializeDatabase() {
         database = FirebaseDatabase.getInstance();

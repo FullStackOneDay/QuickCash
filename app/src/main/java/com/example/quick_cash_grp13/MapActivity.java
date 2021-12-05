@@ -104,6 +104,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
             // Invoke Search Location service
 
+<<<<<<< HEAD
             generateMarker();
             searchInitialize();
 
@@ -147,8 +148,37 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             ActivityCompat.requestPermissions(this,
                     permissions, LOCATION_PERMISSION_REQUEST_CODE);
 
-        }
+=======
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                //The map will only update with removed or changed jobs when the activity restarts
+            }
 
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                //The map will only update with removed or changed jobs when the activity restarts
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                //The map will only update with removed or changed jobs when the activity restarts
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e(TAG, "The read failed: " + error.getCode());
+            }
+        });
+
+        if (mLocationPermission) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                return;
+            }
+            getCurrentLocation();
+            mMap.setMyLocationEnabled(true);
+            mMap.getUiSettings().setMyLocationButtonEnabled(false);
+>>>>>>> origin/main
+        }
     }
 
     @Override
@@ -182,7 +212,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         try {
             if (mLocationPermission) {
-                Task location = mFusedLocationProviderClient.getLastLocation();
+                Task<Location> location = mFusedLocationProviderClient.getLastLocation();
                 location.addOnCompleteListener(new OnCompleteListener() {
                     @Override
                     public void onComplete(@NonNull Task task) {
@@ -235,6 +265,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         });
     }
 
+<<<<<<< HEAD
     private void geoLocate() {
         Log.d(TAG, "GeoLocate: starts");
         String searchString = mSearchText.getText().toString();
@@ -291,5 +322,43 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
             }
         });
+=======
+    private void initializeDatabase() {
+        database = FirebaseDatabase.getInstance();
+         jobRef = database.getReference("jobs");
+    }
+
+    //Searches the input string to find a google maps address.
+    private LatLng latLngFromString(String locationString) {
+        List<Address> addressList = null;
+        Geocoder geo = new Geocoder(MapActivity.this);
+
+        if(locationString != null && !locationString.equals("")) {
+            try {
+                addressList = geo.getFromLocationName(locationString, 1);
+                if (!addressList.isEmpty()){
+                    Address address = addressList.get(0);
+                    return new LatLng(address.getLatitude(), address.getLongitude());
+                 }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+      return null;
+    }
+
+    private void getLocationPermission() {
+
+        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                android.Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            mLocationPermission= true;
+            initMap();
+        } else {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    LOCATION_PERMISSION_REQUEST_CODE);
+        }
+>>>>>>> origin/main
     }
 }
