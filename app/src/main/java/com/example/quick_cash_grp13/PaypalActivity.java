@@ -83,7 +83,6 @@ public class PaypalActivity extends MainActivity{
                         }
                     }
 
-                    //Toast.makeText(this, "Cancel", Toast.LENGTH_SHORT).show();
                 } else if (result.getResultCode() == PaymentActivity.RESULT_EXTRAS_INVALID){
                     Log.d(TAG,"Launcher Result Invalid");
                 } else if (result.getResultCode() == Activity.RESULT_CANCELED) {

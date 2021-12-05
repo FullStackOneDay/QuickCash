@@ -57,7 +57,7 @@ public class JobEntityActivity extends AppCompatActivity {
 //                Job currJob = jobs.get(postion);
 ////                Toast.makeText(JobEntityActivity.this, currJob.toString(), Toast.LENGTH_LONG).show();
                 Intent mainIntent = getIntent();
-                ArrayList<String> job1 = mainIntent.getStringArrayListExtra(SearchActivity.jobEntyty);
+                ArrayList<String> job1 = mainIntent.getStringArrayListExtra(SearchActivity.jobEntity);
                 if (job1.isEmpty()) {
                     job1 = mainIntent.getStringArrayListExtra(HomeActivity.jobEntity);
                 }                String title = job1.get(0);

@@ -20,7 +20,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
-import java.util.Hashtable;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -45,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // get user name and password to string
-                String EmailAddr = (loginEmail.getText().toString());
+                String email = (loginEmail.getText().toString());
                 String userPassword = (loginPassword.getText().toString());
-                loginCheck(EmailAddr,userPassword);
+                loginCheck(email,userPassword);
             }
         });
 
@@ -105,9 +104,6 @@ public class MainActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         setMessage("Login succeed");
                         Toast.makeText(MainActivity.this, "Login succeed", Toast.LENGTH_SHORT).show();
-                        // Sign in success, update UI with the signed-in user's information
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        //update UI and move to next activity
                         //Start next activity
                         switch2LandingPage();
 
@@ -158,5 +154,4 @@ public class MainActivity extends AppCompatActivity {
             });
         }
     }
-
 }

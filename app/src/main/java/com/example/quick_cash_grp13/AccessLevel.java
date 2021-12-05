@@ -8,10 +8,10 @@ public class AccessLevel {
     public static final AccessLevel regUserAccessLevel = new AccessLevel("regUser");
     public static final AccessLevel adminAccessLevel = new AccessLevel("admin");
 
-    String accessLevel;
+    String userAccessLevel;
 
     public AccessLevel(String userAccessLevel) {
-        this.accessLevel = userAccessLevel;
+        this.userAccessLevel = userAccessLevel;
 
     }
 }

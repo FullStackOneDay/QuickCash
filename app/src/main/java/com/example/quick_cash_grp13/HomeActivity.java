@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -27,13 +29,13 @@ public class HomeActivity extends AppCompatActivity  {
 
     public static String jobEntity;
     static String jobCom;
-//    SearchView searchView;
     ListView listView;
-    List<Job> TitleSearchlist;
+    List<Job> titleSearchlist;
     ArrayAdapter<Job> adapter;
     Button jobMap;
     SearchJob searchJob;
     CheckBox checkBoxTitle;
+    private String TAG = "HomeTag";
 
 
     @Override
@@ -43,38 +45,7 @@ public class HomeActivity extends AppCompatActivity  {
 
         Button adSearch = (Button) findViewById(R.id.adSearch);
         initializeDatabase();
-
-//        searchView = (SearchView) findViewById(R.id.searchView);
-
         jobMap = (Button) findViewById(R.id.gotoMap);
-
-
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//
-//                if(jobs.contains(query)){
-//                    adapter.getFilter().filter(query);
-//                }
-//                if (checkBoxTitle.isChecked()){
-//                    TitleSearchlist = searchJob.searchByLocation(query);
-//                    Toast.makeText(HomeActivity.this, "good",Toast.LENGTH_LONG).show();
-//                }
-//
-//
-//                else{
-//                    Toast.makeText(HomeActivity.this, "No Match found",Toast.LENGTH_LONG).show();
-//                }
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                adapter.getFilter().filter(newText);
-//                return false;
-//            }
-//        });
-
         jobMap.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -128,19 +99,19 @@ public class HomeActivity extends AppCompatActivity  {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Log.e(TAG, "The read failed: " + error.getCode());
             }
         });
 
     }
-    public ArrayList<String> addToJob(ArrayList<Job> jobs, int position){
-        ArrayList<String> jobEntity = new ArrayList<>();
-        jobEntity.add(jobs.get(position).getJobTitle());
-        jobEntity.add(jobs.get(position).getField());
-        jobEntity.add(jobs.get(position).getCompany());
-        jobEntity.add(jobs.get(position).getLocation());
-        jobEntity.add(Integer.toString(jobs.get(position).getSalaryMonth()));
-        return jobEntity;
+    public ArrayList<String> addToJob(List<Job> jobs, int position){
+        ArrayList<String> jobEntityList = new ArrayList<>();
+        jobEntityList.add(jobs.get(position).getJobTitle());
+        jobEntityList.add(jobs.get(position).getField());
+        jobEntityList.add(jobs.get(position).getCompany());
+        jobEntityList.add(jobs.get(position).getLocation());
+        jobEntityList.add(Integer.toString(jobs.get(position).getSalaryMonth()));
+        return jobEntityList;
     }
 
 
