@@ -281,7 +281,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.core.jobs"
+         id="org.eclipse.core.jobOfflines"
          download-size="0"
          install-size="0"
          version="3.5.300.v20120912-155018"

@@ -13,11 +13,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.inputmethod.EditorInfo;
-import android.widget.EditText;
 import android.widget.SearchView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -32,7 +28,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.quick_cash_grp13.databinding.ActivityMapBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,7 +35,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
-import java.security.Security;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -103,13 +97,13 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-                Job job = dataSnapshot.getValue(Job.class);
-                String locationString = job.getLocation();
+                JobOffline jobOffline = dataSnapshot.getValue(JobOffline.class);
+                String locationString = jobOffline.getLocation();
                 LatLng location = latLngFromString(locationString);
 
                 //add a marker to the map, and add the returned marker to a list of markers
                 if(location != null) {
-                    markers.add(mMap.addMarker(new MarkerOptions().position(location).title(job.getJobTitle()).snippet("Salary" + job.getSalary())));
+                    markers.add(mMap.addMarker(new MarkerOptions().position(location).title(jobOffline.getJobTitle()).snippet("Salary" + jobOffline.getSalary())));
                 }
             }
 

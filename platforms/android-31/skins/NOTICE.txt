@@ -616,7 +616,7 @@ special circumstances.
 encourage the widest possible use of a certain library, so that it becomes
 a de-facto standard.  To achieve this, non-free programs must be
 allowed to use the library.  A more frequent case is that a free
-library does the same job as widely used non-free libraries.  In this
+library does the same jobOffline as widely used non-free libraries.  In this
 case, there is little to gain by limiting the free library to free
 software only, so we use the Lesser General Public License.
 
@@ -2790,7 +2790,7 @@ special circumstances.
 encourage the widest possible use of a certain library, so that it becomes
 a de-facto standard.  To achieve this, non-free programs must be
 allowed to use the library.  A more frequent case is that a free
-library does the same job as widely used non-free libraries.  In this
+library does the same jobOffline as widely used non-free libraries.  In this
 case, there is little to gain by limiting the free library to free
 software only, so we use the Lesser General Public License.
 
@@ -4680,7 +4680,7 @@ Introduction
   encourage you to use the following text:
 
    """  
-    Portions of this software are copyright © <year> The FreeType
+    Portions of this software are copyright ï¿½ <year> The FreeType
     Project (www.freetype.org).  All rights reserved.
    """
 
@@ -6677,7 +6677,7 @@ special circumstances.
 encourage the widest possible use of a certain library, so that it becomes
 a de-facto standard.  To achieve this, non-free programs must be
 allowed to use the library.  A more frequent case is that a free
-library does the same job as widely used non-free libraries.  In this
+library does the same jobOffline as widely used non-free libraries.  In this
 case, there is little to gain by limiting the free library to free
 software only, so we use the Lesser General Public License.
 
@@ -13555,7 +13555,7 @@ Notices for file(s):
  *   limitations under the License.
  */
 
-W3C® SOFTWARE NOTICE AND LICENSE
+W3Cï¿½ SOFTWARE NOTICE AND LICENSE
 http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
 
 This work (and included software, documentation such as READMEs, or other

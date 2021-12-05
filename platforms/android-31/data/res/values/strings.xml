@@ -4913,7 +4913,7 @@
     <!-- Print fail reason: unknown. [CHAR LIMIT=25] -->
     <string name="reason_unknown">unknown</string>
 
-    <!-- Print fail reason: the print service that has to process the print job is not available. [CHAR LIMIT=none] -->
+    <!-- Print fail reason: the print service that has to process the print jobOffline is not available. [CHAR LIMIT=none] -->
     <string name="reason_service_unavailable">Print service not enabled</string>
 
     <!-- Title for the notification that a print service was installed. [CHAR LIMIT=50] -->

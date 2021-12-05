@@ -39,7 +39,7 @@
             android:layout_height="100dp"
             android:background="@drawable/button_background"
             android:layout_margin="20dp"
-            android:text="I want to post a job"
+            android:text="I want to post a jobOffline"
             android:textColor="#FFF"
             />
 
@@ -51,7 +51,7 @@
             android:layout_margin="20dp"
             android:padding="10dp"
             android:textColor="#FFF"
-            android:text="I am looking for a job"
+            android:text="I am looking for a jobOffline"
             />
 
     </LinearLayout>

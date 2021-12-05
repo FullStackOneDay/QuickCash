@@ -9,13 +9,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import org.w3c.dom.Text;
 
 public class CreatePostActivity extends Activity {
     private FirebaseDatabase database;
@@ -49,7 +45,7 @@ public class CreatePostActivity extends Activity {
                 double salaryAmount = Double.parseDouble(salary.getText().toString());
                 boolean monthlySalary = monthly.isChecked();
 
-                Job job;
+                JobOffline jobOffline;
                 if (jobTitleText.isEmpty() || companyText.isEmpty() || locationText.isEmpty()
                         || fieldText.isEmpty() || !(isSalaryValid(salaryAmount))) {
                     outMsg.setText(R.string.job_missing_fields );
@@ -58,11 +54,11 @@ public class CreatePostActivity extends Activity {
                 else {
                     //create a job from field data and push it to a list on the database
                     if(monthlySalary) { //salary is monthly,
-                        job = new Job(jobTitleText, companyText, fieldText, locationText, (int)salaryAmount);
+                        jobOffline = new JobOffline(jobTitleText, companyText, fieldText, locationText, (int)salaryAmount);
                     } else {    //salary is hourly
-                        job = new Job(jobTitleText, companyText, fieldText, locationText, salaryAmount);
+                        jobOffline = new JobOffline(jobTitleText, companyText, fieldText, locationText, salaryAmount);
                     }
-                    jobRef.push().setValue(job);
+                    jobRef.push().setValue(jobOffline);
                     outMsg.setText(R.string.job_post_success);
                 }
             }

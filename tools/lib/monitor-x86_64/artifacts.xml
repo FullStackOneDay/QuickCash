@@ -1061,7 +1061,7 @@
         <property name='download.size' value='62580'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.eclipse.core.jobs' version='3.5.300.v20120912-155018'>
+    <artifact classifier='osgi.bundle' id='org.eclipse.core.jobOfflines' version='3.5.300.v20120912-155018'>
       <properties size='1'>
         <property name='download.size' value='92510'/>
       </properties>

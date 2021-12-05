@@ -16,7 +16,7 @@ _PY_TRACE_EVENT_PATH = os.path.abspath(
 def _RunTestsOrDie(top_level_dir):
   # Need everything in one process for tracing to work.
   exit_code = run_with_typ.Run(
-      top_level_dir, path=[_PY_TRACE_EVENT_PATH], jobs=1)
+      top_level_dir, path=[_PY_TRACE_EVENT_PATH], jobOfflines=1)
   if exit_code:
     sys.exit(exit_code)
 

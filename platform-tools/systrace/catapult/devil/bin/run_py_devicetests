@@ -41,7 +41,7 @@ def main():
   runner.setup_fn = device_test_case.PrepareDevices
   return runner.main(
       coverage_source=[_DEVIL_PATH],
-      jobs=1,
+      jobOfflines=1,
       suffixes=['*_devicetest.py'],
       top_level_dir=_DEVIL_PATH)
 

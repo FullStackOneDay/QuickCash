@@ -3521,7 +3521,7 @@
     <!-- The alarm window (in milliseconds) that JobScheduler uses to enter the idle state -->
     <integer name="config_jobSchedulerIdleWindowSlop">300000</integer>
 
-    <!-- If true, jobs from background user will be restricted -->
+    <!-- If true, jobOfflines from background user will be restricted -->
     <bool name="config_jobSchedulerRestrictBackgroundUser">false</bool>
     <!-- The length of grace period after user becomes background user -->
     <integer name="config_jobSchedulerUserGracePeriod">60000</integer>

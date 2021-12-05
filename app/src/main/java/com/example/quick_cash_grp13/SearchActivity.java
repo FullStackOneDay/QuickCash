@@ -24,8 +24,8 @@ import java.util.List;
 
 public class SearchActivity extends AppCompatActivity {
 
-    ArrayList<Job> jobs = new ArrayList<>();
-    ArrayList<Job> searchResult = new ArrayList<>();
+    ArrayList<JobOffline> jobOfflines = new ArrayList<>();
+    ArrayList<JobOffline> searchResult = new ArrayList<>();
     SearchJob searchJob;
     ArrayList<String>job1;
     ArrayList<String>job2;
@@ -42,7 +42,7 @@ public class SearchActivity extends AppCompatActivity {
 
         initializeDatabase();
 
-        searchJob = new SearchJob(jobs);
+        searchJob = new SearchJob(jobOfflines);
         EditText searchText = (EditText) findViewById(R.id.searchBox);
         Button searchButton = (Button) findViewById(R.id.searchButton);
         Button backButton = (Button) findViewById(R.id.backButton);
@@ -69,18 +69,18 @@ public class SearchActivity extends AppCompatActivity {
 
                 String searchedText = (searchText.getText().toString());
                 if (radioButtonTitle.isChecked()){
-                    searchResult = (ArrayList<Job>) searchJob.searchByTitle(searchedText);
+                    searchResult = (ArrayList<JobOffline>) searchJob.searchByTitle(searchedText);
                 }
                 else if (radioButtonField.isChecked()){
-                    searchResult = (ArrayList<Job>) searchJob.searchByField(searchedText);
+                    searchResult = (ArrayList<JobOffline>) searchJob.searchByField(searchedText);
                 }else if (radioButtonCom.isChecked()){
-                    searchResult = (ArrayList<Job>) searchJob.searchByCompany(searchedText);
+                    searchResult = (ArrayList<JobOffline>) searchJob.searchByCompany(searchedText);
                 }else if (radioButtonLoc.isChecked()){
-                    searchResult = (ArrayList<Job>) searchJob.searchByLocation(searchedText);
+                    searchResult = (ArrayList<JobOffline>) searchJob.searchByLocation(searchedText);
                 }else if (radioButtonSalart.isChecked()){
                     try {
                         double st = Double.parseDouble(searchedText);
-                        searchResult = (ArrayList<Job>) searchJob.searchBySalary(st);
+                        searchResult = (ArrayList<JobOffline>) searchJob.searchBySalary(st);
                     }
                     catch (NumberFormatException e){
                         Toast.makeText(SearchActivity.this,"Please input numbers", Toast.LENGTH_LONG).show();
@@ -204,9 +204,9 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot adSnapshot: snapshot.getChildren()) {
-                    Job job = adSnapshot.getValue(Job.class);
-                    jobs.add(job);
-                    searchResult.add(job);
+                    JobOffline jobOffline = adSnapshot.getValue(JobOffline.class);
+                    jobOfflines.add(jobOffline);
+                    searchResult.add(jobOffline);
                 }
             }
             @Override
@@ -216,13 +216,13 @@ public class SearchActivity extends AppCompatActivity {
         });
     }
 
-    public ArrayList<String> addToJob(List<Job> jobs, int position){
+    public ArrayList<String> addToJob(List<JobOffline> jobOfflines, int position){
         ArrayList<String> jobEntityList = new ArrayList<>();
-        jobEntityList.add(jobs.get(position).getJobTitle());
-        jobEntityList.add(jobs.get(position).getField());
-        jobEntityList.add(jobs.get(position).getCompany());
-        jobEntityList.add(jobs.get(position).getLocation());
-        jobEntityList.add(Integer.toString(jobs.get(position).getSalaryMonth()));
+        jobEntityList.add(jobOfflines.get(position).getJobTitle());
+        jobEntityList.add(jobOfflines.get(position).getField());
+        jobEntityList.add(jobOfflines.get(position).getCompany());
+        jobEntityList.add(jobOfflines.get(position).getLocation());
+        jobEntityList.add(Integer.toString(jobOfflines.get(position).getSalaryMonth()));
         return jobEntityList;
     }
 }

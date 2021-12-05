@@ -172,18 +172,18 @@ You can customize this attribute with the `tipAttribute` attribute:
         }
 
         // Job ensures we're not double calling setPosition() on DOM attach.
-        this.job('positionJob', this.setPosition);
+        this.jobOffline('positionJob', this.setPosition);
 
         // Monitor children to re-position tooltip when light dom changes.
         this.onMutation(this, this.updatedChildren);
       },
 
       labelChanged: function(oldVal, newVal) {
-        this.job('positionJob', this.setPosition);
+        this.jobOffline('positionJob', this.setPosition);
       },
 
       positionChanged: function(oldVal, newVal) {
-        this.job('positionJob', this.setPosition);
+        this.jobOffline('positionJob', this.setPosition);
       },
 
       setPosition: function() {

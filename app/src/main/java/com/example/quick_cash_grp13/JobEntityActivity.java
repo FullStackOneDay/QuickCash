@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class JobEntityActivity extends AppCompatActivity {
 
-    ArrayList<Job> jobs = new ArrayList<>();
+    ArrayList<JobOffline> jobOfflines = new ArrayList<>();
 
 
 
@@ -39,8 +39,8 @@ public class JobEntityActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot adSnapshot: snapshot.getChildren()) {
-                    Job job = adSnapshot.getValue(Job.class);
-                    jobs.add(job);
+                    JobOffline jobOffline = adSnapshot.getValue(JobOffline.class);
+                    jobOfflines.add(jobOffline);
                 }
                 TextView TextViewTitle = (TextView) findViewById(R.id.jobTitile);
                 TextView TextViewField=  (TextView) findViewById(R.id.jobField);

@@ -25,13 +25,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class HomeActivity extends AppCompatActivity  {
-    ArrayList<Job> jobs = new ArrayList<>();
+    ArrayList<JobOffline> jobOfflines = new ArrayList<>();
 
     public static String jobEntity;
     static String jobCom;
     ListView listView;
-    List<Job> titleSearchlist;
-    ArrayAdapter<Job> adapter;
+    List<JobOffline> titleSearchlist;
+    ArrayAdapter<JobOffline> adapter;
     Button jobMap;
     SearchJob searchJob;
     CheckBox checkBoxTitle;
@@ -72,15 +72,15 @@ public class HomeActivity extends AppCompatActivity  {
     private void initializeDatabase(){
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference reference1 = db.getReference("jobs");
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, jobs);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, jobOfflines);
 
         reference1.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot adSnapshot: snapshot.getChildren()) {
-                    Job job = adSnapshot.getValue(Job.class);
-                    jobs.add(job);
+                    JobOffline jobOffline = adSnapshot.getValue(JobOffline.class);
+                    jobOfflines.add(jobOffline);
                 }
                 listView = (ListView) findViewById(R.id.listView);
                 listView.setAdapter(adapter);
@@ -88,7 +88,7 @@ public class HomeActivity extends AppCompatActivity  {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent intent = new Intent(getApplicationContext(), JobEntityActivity.class);
-                        ArrayList<String> job1 = addToJob(jobs,position);
+                        ArrayList<String> job1 = addToJob(jobOfflines,position);
                         intent.putExtra(jobEntity, job1);
 
                         startActivity(intent);
@@ -104,13 +104,13 @@ public class HomeActivity extends AppCompatActivity  {
         });
 
     }
-    public ArrayList<String> addToJob(List<Job> jobs, int position){
+    public ArrayList<String> addToJob(List<JobOffline> jobOfflines, int position){
         ArrayList<String> jobEntityList = new ArrayList<>();
-        jobEntityList.add(jobs.get(position).getJobTitle());
-        jobEntityList.add(jobs.get(position).getField());
-        jobEntityList.add(jobs.get(position).getCompany());
-        jobEntityList.add(jobs.get(position).getLocation());
-        jobEntityList.add(Integer.toString(jobs.get(position).getSalaryMonth()));
+        jobEntityList.add(jobOfflines.get(position).getJobTitle());
+        jobEntityList.add(jobOfflines.get(position).getField());
+        jobEntityList.add(jobOfflines.get(position).getCompany());
+        jobEntityList.add(jobOfflines.get(position).getLocation());
+        jobEntityList.add(Integer.toString(jobOfflines.get(position).getSalaryMonth()));
         return jobEntityList;
     }
 

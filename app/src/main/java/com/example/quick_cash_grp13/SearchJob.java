@@ -5,76 +5,76 @@ import java.util.List;
 
 public class SearchJob {
 
-    private List<Job> jobs;
+    private List<JobOffline> jobOfflines;
 
-    public SearchJob(List<Job> jobs) {
-        this.jobs = jobs;
+    public SearchJob(List<JobOffline> jobOfflines) {
+        this.jobOfflines = jobOfflines;
     }
 
     @Override
     public String toString() {
         return "SearchJob{" +
-                "jobs=" + jobs +
+                "jobs=" + jobOfflines +
                 "}\n";
     }
 
-    public List<Job> getJobs() {
-        return jobs;
+    public List<JobOffline> getJobs() {
+        return jobOfflines;
     }
 
-    public void setJobs(List<Job> jobs) {
-        this.jobs = jobs;
+    public void setJobs(List<JobOffline> jobOfflines) {
+        this.jobOfflines = jobOfflines;
     }
 
     // add one job
-    public void addJob(Job jobAdd){
-        jobs.add(jobAdd);
+    public void addJob(JobOffline jobOfflineAdd){
+        jobOfflines.add(jobOfflineAdd);
     }
 
     // add an arraylist of jobs
-    public void addJobs(List<Job> jobsAdd){
-        jobs.addAll(jobsAdd);
+    public void addJobs(List<JobOffline> jobsAdd){
+        jobOfflines.addAll(jobsAdd);
     }
 
     //Method that returns an ArrayList of jobs that have titles that contain the users' search.
-    public List<Job> searchByTitle(String title){
-        ArrayList<Job> jobSearched = new ArrayList<>();
-        for (Job job : jobs){
-            if(job.getJobTitle().toLowerCase().contains(title.toLowerCase())){
-                jobSearched.add(job);
+    public List<JobOffline> searchByTitle(String title){
+        ArrayList<JobOffline> jobOfflineSearched = new ArrayList<>();
+        for (JobOffline jobOffline : jobOfflines){
+            if(jobOffline.getJobTitle().toLowerCase().contains(title.toLowerCase())){
+                jobOfflineSearched.add(jobOffline);
             }
         }
-        return jobSearched;
+        return jobOfflineSearched;
     }
 
     //Method that returns an ArrayList of jobs that have job fields that contain the users' search.
-    public  List<Job> searchByField(String field){
-        ArrayList<Job> fieldSearched = new ArrayList<>();
-        for(Job job : jobs){
-            if(job.getField().toLowerCase().contains(field.toLowerCase())){
-                fieldSearched.add(job);
+    public  List<JobOffline> searchByField(String field){
+        ArrayList<JobOffline> fieldSearched = new ArrayList<>();
+        for(JobOffline jobOffline : jobOfflines){
+            if(jobOffline.getField().toLowerCase().contains(field.toLowerCase())){
+                fieldSearched.add(jobOffline);
             }
         }
         return fieldSearched;
     }
 
     //Method that returns an ArrayList of jobs that have companies that contain the users' search.
-    public  List<Job> searchByCompany(String company){
-        ArrayList<Job> companySearched = new ArrayList<>();
-        for(Job job : jobs){
-            if(job.getCompany().toLowerCase().contains(company.toLowerCase())){
-                companySearched.add(job);
+    public  List<JobOffline> searchByCompany(String company){
+        ArrayList<JobOffline> companySearched = new ArrayList<>();
+        for(JobOffline jobOffline : jobOfflines){
+            if(jobOffline.getCompany().toLowerCase().contains(company.toLowerCase())){
+                companySearched.add(jobOffline);
             }
         }
         return companySearched;
     }
 
     //Method that returns an ArrayList of jobs that have locations that contain the users' search.
-    public  List<Job> searchByLocation(String location){
-        ArrayList<Job> locationSearched = new ArrayList<>();
-        for(Job job : jobs){
-            if(job.getLocation().toLowerCase().contains(location.toLowerCase())){
-                locationSearched.add(job);
+    public  List<JobOffline> searchByLocation(String location){
+        ArrayList<JobOffline> locationSearched = new ArrayList<>();
+        for(JobOffline jobOffline : jobOfflines){
+            if(jobOffline.getLocation().toLowerCase().contains(location.toLowerCase())){
+                locationSearched.add(jobOffline);
             }
         }
         return locationSearched;
@@ -82,11 +82,11 @@ public class SearchJob {
     }
 
     //Method that returns an ArrayList of jobs that have salaries that are exactly like the users' search.
-    public  List<Job> searchBySalary(double salary){
-        ArrayList<Job> salarySearched = new ArrayList<>();
-        for(Job job : jobs){
-            if(job.getSalary() == (salary)){
-                salarySearched.add(job);
+    public  List<JobOffline> searchBySalary(double salary){
+        ArrayList<JobOffline> salarySearched = new ArrayList<>();
+        for(JobOffline jobOffline : jobOfflines){
+            if(jobOffline.getSalary() == (salary)){
+                salarySearched.add(jobOffline);
             }
         }
         return salarySearched;

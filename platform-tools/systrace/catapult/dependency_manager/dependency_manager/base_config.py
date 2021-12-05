@@ -239,12 +239,12 @@ class BaseConfig(object):
       execute_job: True if the config should be written to disk and the file
           should be uploaded to cloud storage after the update. False if
           multiple updates should be performed atomically. Must call
-          ExecuteUpdateJobs after all non-executed jobs are added to complete
+          ExecuteUpdateJobs after all non-executed jobOfflines are added to complete
           the update.
 
     Raises:
       ReadWriteError: If the config was not initialized as writable, or if
-          |execute_job| is True but the config has update jobs still pending
+          |execute_job| is True but the config has update jobOfflines still pending
           execution.
       ValueError: If no information exists in the config for |dependency| on
           |platform|.
