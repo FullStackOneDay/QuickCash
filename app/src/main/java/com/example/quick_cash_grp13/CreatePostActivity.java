@@ -1,6 +1,9 @@
 package com.example.quick_cash_grp13;
 
 import android.app.Activity;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -10,6 +13,9 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -65,6 +71,7 @@ public class CreatePostActivity extends Activity {
                     }
                     jobRef.push().setValue(job);
                     outMsg.setText(R.string.job_post_success);
+                    notifications(jobTitleText, locationText);
                 }
             }
         });
@@ -81,5 +88,22 @@ public class CreatePostActivity extends Activity {
     private void initializeDatabase() {
         database = FirebaseDatabase.getInstance();
         jobRef = database.getReference("jobs");
+    }
+
+    private void notifications(String jobTitle, String jobLocation) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("id", jobTitle, NotificationManager.IMPORTANCE_DEFAULT);
+
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "id")
+                .setContentTitle("Job Posted Successfully")
+                .setSmallIcon(R.drawable.ic_baseline_attach_money_24)
+                .setAutoCancel(true);
+
+        NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this);
+        managerCompat.notify(999, builder.build());
     }
 }
