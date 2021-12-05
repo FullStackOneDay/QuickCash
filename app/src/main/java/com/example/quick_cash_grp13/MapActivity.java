@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -15,9 +16,13 @@ import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +45,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
 import java.security.Security;
@@ -74,7 +80,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mSearchText = (EditText) findViewById(R.id.input_search);
         getLocationPermission();
 
-        initializeDatabase();
+
 
 
     }
@@ -97,9 +103,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             mMap.setMyLocationEnabled(true);
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
             // Invoke Search Location service
+
+            generateMarker();
             searchInitialize();
 
         }
+
 
     }
 
@@ -115,11 +124,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     }
 
 
-    private void initializeDatabase() {
-        database = FirebaseDatabase.getInstance();
-        jobRef = database.getReference("jobs");
 
-    }
 
 
 
@@ -254,5 +259,37 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
 
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+    }
+
+    private void generateMarker(){
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        DatabaseReference reference1 = db.getReference("jobs");
+        reference1.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot adSnapshot: snapshot.getChildren()) {
+                    Job job = adSnapshot.getValue(Job.class);
+                    String location = job.getLocation();
+                    Geocoder geocoder = new Geocoder((MapActivity.this));
+                    List<Address> addressLists = new ArrayList<>();
+                    try {
+                        addressLists = geocoder.getFromLocationName(location, 1);
+                    } catch (IOException ex) {
+                    }
+                    if (addressLists.size() > 0) {
+                        Address address = addressLists.get(0);
+                        LatLng coordinates = new LatLng(address.getLatitude(),address.getLongitude());
+                        mMap.addMarker(new MarkerOptions().position(coordinates).title(job.getJobTitle()));
+                    }
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }
