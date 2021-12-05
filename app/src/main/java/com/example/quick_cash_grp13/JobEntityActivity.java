@@ -5,10 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -49,7 +46,7 @@ public class JobEntityActivity extends AppCompatActivity {
                 TextView TextViewField=  (TextView) findViewById(R.id.jobField);
                 TextView TextViewCom=  (TextView) findViewById(R.id.jobCompany);
                 TextView TextViewLoc=  (TextView) findViewById(R.id.jonLocation);
-                TextView TextViewnSalart=  (TextView) findViewById(R.id.jobSalary);
+                TextView TextViewSalary=  (TextView) findViewById(R.id.jobSalary);
 
 
 
@@ -62,12 +59,12 @@ public class JobEntityActivity extends AppCompatActivity {
                 Intent mainIntent = getIntent();
                 ArrayList<String> job1 = mainIntent.getStringArrayListExtra(SearchActivity.jobEntyty);
                 if (job1.isEmpty()) {
-                    job1 = mainIntent.getStringArrayListExtra(HomeActivity.jobEntyty);
-                }                String title = "Title: "+job1.get(0);
+                    job1 = mainIntent.getStringArrayListExtra(HomeActivity.jobEntity);
+                }                String title = job1.get(0);
                 TextViewTitle.append(title);
 
-                String fielfd = "Field: "+job1.get(1);
-                TextViewField.append(fielfd);
+                String field = "Field: "+job1.get(1);
+                TextViewField.append(field);
 
                 String company = "Company: "+job1.get(2);
                 TextViewCom.append(company);
@@ -77,15 +74,10 @@ public class JobEntityActivity extends AppCompatActivity {
 
                 double salary1 = Integer.parseInt(job1.get(4));
                 String salary = "Salary: " + salary1;
-                if (salary1 == 0){
-                    salary = "Salary: No Information";
-                    TextViewnSalart.append(salary);
-
+                if (salary1 == 0.0){
+                    salary = "Salary: No information provided";
                 }
-                else {
-                    TextViewnSalart.append(salary);
-                }
-
+                TextViewSalary.append(salary);
             }
 
             @Override

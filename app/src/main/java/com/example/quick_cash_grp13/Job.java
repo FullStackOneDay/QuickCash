@@ -100,13 +100,13 @@ public class Job {
     @Override
     public String toString() {
         if (salary != 0 && salaryMonth ==0) {
-            return field + ": " + jobTitle + " in " + location + ". The salary is: " + salary;
+            return jobTitle + "\nField: " + field + "\nLocation: " + location + "\nSalary: " + salary;
         }
         else if (salary == 0 && salaryMonth !=0) {
-            return field + ": " + jobTitle + " in " + location + ". The salary of the month is: " + salaryMonth;
+            return jobTitle + "\nField: " + field + "\nLocation: " + location + "\nMonthly salary: " + salaryMonth;
         }
         else {
-            return field + ": " + jobTitle + " in " + location + ".;";
+            return jobTitle + "\nField: " + field + "\nLocation: " + location;
         }
     }
 }

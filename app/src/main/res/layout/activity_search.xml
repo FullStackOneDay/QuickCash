@@ -5,126 +5,126 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SearchActivity"
-    tools:ignore="ExtraText">
+    tools:ignore="ExtraText"
+    android:background="@color/purple_700">
 
-    <EditText
-        android:id="@+id/searchBox"
-        android:layout_width="301dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="16dp"
-        android:hint="Search Here"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="410dp"
-        android:layout_height="245dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchBox">
-
-        <RadioButton
-            android:id="@+id/radioButtonTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="5dp"
-            android:text="Title"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchBox" />
-
-        <RadioButton
-            android:id="@+id/radioButtonField"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="0dp"
-            android:duplicateParentState="false"
-            android:text="Field"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioButtonTitle" />
-
-        <RadioButton
-            android:id="@+id/radioButtonCompany"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="0dp"
-            android:text="Company"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioButtonField" />
-
-        <RadioButton
-            android:id="@+id/radioButtonLocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="0dp"
-            android:text="Location"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioButtonCompany" />
-
-        <RadioButton
-            android:id="@+id/radioButtonSalary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="0dp"
-            android:text="Salary"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioButtonLocation" />
-
-
-    </RadioGroup>
-
-
-    <Button
-        android:id="@+id/searchButton"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/postAJob"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="8dp"
-        android:text="Search"
+        android:gravity="center"
+        android:text="Advance Job Search"
+        android:textColor="#FFF"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
-
-    <Button
-        android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="8dp"
-        android:text="Back"
-        app:layout_constraintStart_toEndOf="@+id/clearButton"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
-
-    <Button
-        android:id="@+id/clearButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="8dp"
-        android:text="clear"
-        app:layout_constraintStart_toEndOf="@+id/searchButton"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.493" />
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="380dp"
-        android:layout_height="354dp"
-        android:layout_marginTop="1dp"
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="620dp"
+        android:background="@drawable/bg_shape"
+        android:gravity="center"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clearButton">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
-        <TextView
-            android:id="@+id/searchResul1"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/searchBox"
+            android:layout_width="340dp"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
-            />
+            android:hint="Type the keyword here..." />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp">
+
+            <RadioButton
+                android:id="@+id/radioButtonTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title" />
+
+            <RadioButton
+                android:id="@+id/radioButtonField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:duplicateParentState="false"
+                android:text="Field" />
+
+            <RadioButton
+                android:id="@+id/radioButtonCompany"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Company" />
+
+            <RadioButton
+                android:id="@+id/radioButtonLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location" />
+
+            <RadioButton
+                android:id="@+id/radioButtonSalary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Salary" />
+
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/searchButton"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:text="Search" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="Back" />
+
+            <Button
+                android:id="@+id/clearButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="clear" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_margin="25dp"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/list_bg"
+            android:elevation="6dp" >
+            <TextView
+                android:id="@+id/searchResul1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/searchResul2"

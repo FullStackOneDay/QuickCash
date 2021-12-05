@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,8 +12,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 
 import android.widget.ListView;
-import android.widget.SearchView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 public class HomeActivity extends AppCompatActivity  {
     ArrayList<Job> jobs = new ArrayList<>();
 
-    public static String jobEntyty;
+    public static String jobEntity;
     static String jobCom;
 //    SearchView searchView;
     ListView listView;
@@ -121,7 +118,7 @@ public class HomeActivity extends AppCompatActivity  {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent intent = new Intent(getApplicationContext(), JobEntityActivity.class);
                         ArrayList<String> job1 = addToJob(jobs,position);
-                        intent.putExtra(jobEntyty, job1);
+                        intent.putExtra(jobEntity, job1);
 
                         startActivity(intent);
 

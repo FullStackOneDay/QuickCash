@@ -5,62 +5,9 @@
     android:id="@+id/mainActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/purple_700"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/loginEmail"
-        android:layout_width="286dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="46dp"
-        android:layout_marginBottom="40dp"
-        android:ems="10"
-        android:hint="@string/email_address"
-        android:importantForAutofill="no"
-        android:maxLength="320"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/loginPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <EditText
-        android:id="@+id/loginPassword"
-        android:layout_width="284dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="40dp"
-        android:ems="10"
-        android:hint="Password"
-        android:importantForAutofill="no"
-        android:inputType="textPassword"
-        android:maxLength="30"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginEmail" />
-
-    <Button
-        android:id="@+id/loginCheck"
-        android:layout_width="130dp"
-        android:layout_height="72dp"
-        android:layout_marginTop="68dp"
-        android:text="@string/login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/registerCheck"
-        app:layout_constraintHorizontal_bias="0.63"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginPassword" />
-
-    <Button
-        android:id="@+id/registerCheck"
-        android:layout_width="121dp"
-        android:layout_height="72dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="60dp"
-        android:text="@string/register"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginPassword" />
 
     <TextView
         android:id="@+id/textView"
@@ -68,23 +15,73 @@
         android:layout_height="51dp"
         android:layout_marginTop="40dp"
         android:gravity="center"
-        android:text="@string/quick_cash_login"
+        android:text="@string/quick_cash"
+        android:textColor="#FFF"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/loginEmail"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.357" />
 
-    <TextView
-        android:id="@+id/errMsg"
-        android:layout_width="286dp"
-        android:layout_height="63dp"
-        android:ems="10"
-        android:hint="Login or register to create a new account"
-        app:layout_constraintBottom_toTopOf="@+id/loginCheck"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginPassword" />
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:background="@drawable/bg_shape"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/loginEmail"
+            android:layout_width="290dp"
+            android:layout_height="60dp"
+            android:ems="10"
+            android:hint="Email Address"
+            android:padding="10dp"
+            android:importantForAutofill="no"
+            android:maxLength="320"
+            android:minHeight="48dp" />
+
+        <EditText
+            android:id="@+id/loginPassword"
+            android:layout_width="290dp"
+            android:layout_height="60dp"
+            android:ems="10"
+            android:padding="10dp"
+            android:hint="Password"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:maxLength="30" />
+
+        <Button
+            android:id="@+id/loginCheck"
+            android:layout_width="230dp"
+            android:layout_height="60dp"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_background"
+            android:text="@string/login" />
+
+        <Button
+            android:id="@+id/registerCheck"
+            android:layout_width="230dp"
+            android:layout_height="60dp"
+            android:padding="10dp"
+            android:background="@drawable/button_background"
+            android:text="@string/register" />
+
+        <TextView
+            android:id="@+id/errMsg"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:padding="10dp"
+            android:gravity="center"
+            android:hint="Login or register to create a new account" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

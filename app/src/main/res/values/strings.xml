@@ -2,7 +2,7 @@
     <string name="app_name">Quick_Cash_Grp13</string>
     <string name="username">username</string>
     <string name="password">password</string>
-    <string name="quick_cash_login">Quick Cash Login</string>
+    <string name="quick_cash">Quick Cash</string>
     <string name="login">login</string>
     <string name="register">register</string>
     <string name="email_address">email_address</string>
