@@ -2,7 +2,7 @@
     <string name="app_name">Quick_Cash_Grp13</string>
     <string name="username">username</string>
     <string name="password">password</string>
-    <string name="quick_cash_login">Quick Cash Login</string>
+    <string name="quick_cash">Quick Cash</string>
     <string name="login">login</string>
     <string name="register">register</string>
     <string name="email_address">email_address</string>
@@ -44,5 +44,7 @@
 
     <string name="enter_amount_to_be_paid">Enter Amount to be Paid</string>
     <string name="make_payment">Make Payment</string>
+    <string name="type_the_keyword_here">Type the keyword here...</string>
+    <string name="advance_job_search">Advance Job Search</string>
 
 </resources>
