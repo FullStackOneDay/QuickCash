@@ -7,7 +7,7 @@ public abstract class User {
     private int age;
     protected AccessLevel accessLevel;
 
-    public User(String userType, String firstName, String lastName, int age) {
+    protected User(String userType, String firstName, String lastName, int age) {
         this.userType = userType;
         this.firstName = firstName;
         this.lastName = lastName;

@@ -5,10 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -60,9 +57,9 @@ public class JobEntityActivity extends AppCompatActivity {
 //                Job currJob = jobs.get(postion);
 ////                Toast.makeText(JobEntityActivity.this, currJob.toString(), Toast.LENGTH_LONG).show();
                 Intent mainIntent = getIntent();
-                ArrayList<String> job1 = mainIntent.getStringArrayListExtra(SearchActivity.jobEntyty);
+                ArrayList<String> job1 = mainIntent.getStringArrayListExtra(SearchActivity.jobEntity);
                 if (job1.isEmpty()) {
-                    job1 = mainIntent.getStringArrayListExtra(HomeActivity.jobEntyty);
+                    job1 = mainIntent.getStringArrayListExtra(HomeActivity.jobEntity);
                 }                String title = "Title: "+job1.get(0);
                 TextViewTitle.append(title);
 
