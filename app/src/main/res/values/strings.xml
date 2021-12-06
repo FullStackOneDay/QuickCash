@@ -46,5 +46,6 @@
     <string name="make_payment">Make Payment</string>
     <string name="type_the_keyword_here">Type the keyword here...</string>
     <string name="advance_job_search">Advance Job Search</string>
+    <string name="quick_cash_login" />
 
 </resources>

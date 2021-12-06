@@ -45,7 +45,12 @@ public class CreatePostActivity extends Activity {
                 double salaryAmount = Double.parseDouble(salary.getText().toString());
                 boolean monthlySalary = monthly.isChecked();
 
-                JobOffline jobOffline;
+//                JobOffline jobOffline;
+                JobFactory jobFactory = new JobFactory();
+                JobCollection jobOffline;
+
+
+
                 if (jobTitleText.isEmpty() || companyText.isEmpty() || locationText.isEmpty()
                         || fieldText.isEmpty() || !(isSalaryValid(salaryAmount))) {
                     outMsg.setText(R.string.job_missing_fields );
@@ -54,9 +59,12 @@ public class CreatePostActivity extends Activity {
                 else {
                     //create a job from field data and push it to a list on the database
                     if(monthlySalary) { //salary is monthly,
-                        jobOffline = new JobOffline(jobTitleText, companyText, fieldText, locationText, (int)salaryAmount);
+//                        jobOffline = new JobOffline(jobTitleText, companyText, fieldText, locationText, (int)salaryAmount);
+                        jobOffline = jobFactory.getMonthJob("JobOffline",jobTitleText, companyText, fieldText, locationText, (int)salaryAmount);
                     } else {    //salary is hourly
-                        jobOffline = new JobOffline(jobTitleText, companyText, fieldText, locationText, salaryAmount);
+//                        jobOffline = new JobOffline(jobTitleText, companyText, fieldText, locationText, salaryAmount);
+                        jobOffline = jobFactory.getDailyJob("JobOffline",jobTitleText, companyText, fieldText, locationText, salaryAmount);
+
                     }
                     jobRef.push().setValue(jobOffline);
                     outMsg.setText(R.string.job_post_success);

@@ -49,13 +49,13 @@ public class CreatePostActivityTest {
         onView(withId(R.id.company)).perform(typeText("Test Company"));
         onView(withId(R.id.location)).perform(typeText("Test Location"));
         onView(withId(R.id.fieldSpinner)).perform(click());
-        onData(is("Law")).perform(click());
+        onData(is("Law")).perform(click()).perform(closeSoftKeyboard());;
         onView(withId(R.id.salary)).perform(typeText("5000")).perform(closeSoftKeyboard());
         onView(withId(R.id.monthly)).perform(click());
         onView(withId(R.id.postJobButton)).perform(click());
 
         //This line is causing test cases to failed
-        //onView(withId(R.id.outputMsg)).check(matches(withText("Job posted successfully!")));
+        onView(withId(R.id.outputMsg)).check(matches(withText("Job posted successfully")));
     }
 
     /**
